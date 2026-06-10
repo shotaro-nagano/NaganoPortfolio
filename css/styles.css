@@ -7,9 +7,9 @@
 /* ---------- Tokens ---------- */
 :root {
   /* type */
-  --font-display: "Outfit", "M PLUS 2", system-ui, sans-serif;
-  --font-jp: "M PLUS 2", "Outfit", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "M PLUS 2", ui-monospace, monospace;
+  --font-display: "Space Grotesk", "Zen Kaku Gothic New", system-ui, sans-serif;
+  --font-jp: "Zen Kaku Gothic New", "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Zen Kaku Gothic New", ui-monospace, monospace;
 
   /* fluid type scale */
   --fs-hero: clamp(3rem, 11vw, 11rem);
@@ -84,6 +84,7 @@ html {
   text-rendering: optimizeLegibility;
   scroll-behavior: auto; /* lenis owns scrolling */
   overflow-x: hidden;    /* contain the full-width About track; match body */
+  overscroll-behavior-y: none; /* stop mobile pull-to-refresh / reload on over-scroll up */
 }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -97,6 +98,7 @@ body {
   line-height: 1.68;
   letter-spacing: 0.006em;
   overflow-x: hidden;
+  overscroll-behavior-y: none; /* match html: prevent pull-to-refresh on touch */
   transition: background-color 0.6s var(--ease-out), color 0.6s var(--ease-out);
   -webkit-tap-highlight-color: transparent;
 }
@@ -456,7 +458,7 @@ section { position: relative; }
 /* ---------- Contact / Footer ---------- */
 .contact { padding-block: var(--section-y) clamp(3rem,5vw,5rem); border-top: 1px solid var(--line); }
 .contact-cta { display: block; }
-.contact-cta .ctitle { font-size: clamp(2.1rem, 6.5vw, 5.5rem); font-weight: 500; line-height: 1.0; letter-spacing: -0.035em; }
+.contact-cta .ctitle { font-size: clamp(1.5rem, 4.2vw, 3.2rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; }
 .contact-cta .mail-link { color: var(--accent-text); display: inline-block; position: relative; word-break: break-word; }
 .contact-cta .mail-link::after { content:""; position:absolute; left:0; bottom:0.08em; height:3px; width:100%; background: var(--accent); transform: scaleX(0); transform-origin:left; transition: transform .5s var(--ease-out); }
 .contact-cta .mail-link:hover::after { transform: scaleX(1); }
@@ -474,7 +476,7 @@ section { position: relative; }
 
 /* ---------- Back-to-top FAB ---------- */
 #to-top-fab {
-  position: fixed; right: clamp(1rem, 3vw, 2rem); bottom: clamp(1rem, 3vw, 2rem); z-index: 140;
+  position: fixed; right: clamp(1.25rem, 3vw, 2.5rem); bottom: clamp(1.75rem, 8vh, 4.5rem); z-index: 140;
   width: 52px; height: 52px; border-radius: 50%;
   display: grid; place-items: center;
   color: var(--fg); background: color-mix(in srgb, var(--bg-elev) 82%, transparent);
