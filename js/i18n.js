@@ -389,7 +389,7 @@ window.SKILLS = [
   {
     feature: true,
     title: { ja: "AI・自動化", en: "AI & Automation" },
-    chips: ["n8n", "生成AI連携 / Generative AI", "ワークフロー自動化", "runway", "sora2", "suno", "midjourney", "[ 利用API・モデル ]"]
+    chips: ["n8n", "生成AI連携 / Generative AI", "ワークフロー自動化", "Claude（Claude Code・Claude Design・Cowork）", "ChatGPT（Codex）", "Gemini", "NotebookLM", "Stitch", "runway", "sora2", "suno", "midjourney"]
   },
   {
     title: { ja: "言語", en: "Languages" },

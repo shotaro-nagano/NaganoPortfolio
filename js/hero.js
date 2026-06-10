@@ -100,9 +100,9 @@
 
       vec3 col=mix(u_bg,u_elev, smoothstep(0.16,0.92,f));
       float acc=smoothstep(0.66,1.0,f+r.x*0.18);
-      acc*= (0.26 + u_mvel*1.6);
-      acc*= smoothstep(0.95,0.10,md)*0.85+0.16;
-      col=mix(col,u_accent, clamp(acc,0.0,1.0)*0.55);
+      acc*= (0.32 + u_mvel*1.7);
+      acc*= smoothstep(0.95,0.10,md)*0.85+0.20;
+      col=mix(col,u_accent, clamp(acc,0.0,1.0)*0.62);
 
       // gentle vignette
       float vig=smoothstep(1.4,0.2,length(p));

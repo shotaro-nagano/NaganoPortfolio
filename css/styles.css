@@ -270,15 +270,15 @@ section { position: relative; }
 /* placeholder hero background image: backmost, faded, under WebGL + overlay */
 #hero-bg { position:absolute; inset:0; z-index:0; background-image: var(--hero-img, url("../assets/hero-bg.png")); background-size: cover; background-position: center; opacity: 0.82;
   will-change: transform; transform-origin: 60% 40%;
-  animation: heroDrift 30s var(--ease-inout) infinite alternate; }
+  animation: heroDrift 20s var(--ease-inout) infinite alternate; }
 @keyframes heroDrift {
-  0%   { transform: scale(1.08) translate3d(0%, 0%, 0); }
-  50%  { transform: scale(1.16) translate3d(-2.2%, -1.6%, 0); }
-  100% { transform: scale(1.10) translate3d(1.8%, 1.2%, 0); }
+  0%   { transform: scale(1.10) translate3d(0%, 0%, 0); }
+  50%  { transform: scale(1.20) translate3d(-4%, -3%, 0); }
+  100% { transform: scale(1.12) translate3d(3.2%, 2.2%, 0); }
 }
-#hero-canvas { opacity: 0.62; }
-[data-theme="light"] #hero-bg { opacity: 0.38; }
-[data-theme="light"] #hero-canvas { opacity: 0.5; }
+#hero-canvas { opacity: 0.8; }
+[data-theme="light"] #hero-bg { opacity: 0.4; }
+[data-theme="light"] #hero-canvas { opacity: 0.6; }
 @media (prefers-reduced-motion: reduce) { #hero-bg { animation: none; transform: scale(1.06); } }
 .hero-overlay { position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
@@ -290,7 +290,7 @@ section { position: relative; }
 .hero-inner { position: relative; z-index: 2; padding-inline: var(--pad-x); width: 100%; max-width: var(--maxw); margin-inline: auto; }
 .hero-eyebrow { margin-bottom: clamp(1.2rem, 3vw, 2.4rem); }
 .hero h1 {
-  font-size: clamp(2.4rem, 6vw, 6rem); font-weight: 500; line-height: 1.04; letter-spacing: -0.03em;
+  font-size: clamp(1.9rem, 4.4vw, 4.1rem); font-weight: 500; line-height: 1.08; letter-spacing: -0.025em;
   text-wrap: balance;
 }
 .hero h1 .accent { color: var(--accent-text); font-style: italic; font-weight: 400; }
@@ -365,7 +365,7 @@ section { position: relative; }
 /* ---------- About / Strengths (horizontal pin) ---------- */
 .about { background: var(--bg-elev); border-block: 1px solid var(--line); }
 .about-intro { padding-block: var(--section-y) clamp(2rem,5vw,4rem); }
-.about-lead { font-size: var(--fs-h2); font-weight: 500; line-height: 1.12; letter-spacing: -0.02em; max-width: 22ch; }
+.about-lead { font-size: var(--fs-h2); font-weight: 500; line-height: 1.18; letter-spacing: -0.02em; max-width: 15ch; }
 .about-lead .nb { display: inline-block; }
 .about-lead em { color: var(--accent-text); font-style: italic; }
 .about-bio { margin-top: clamp(1.6rem, 3vw, 2.6rem); max-width: 68ch; display: flex; flex-direction: column; gap: 1.1em; }
