@@ -251,6 +251,7 @@ window.WORKS = [
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "[ 成果を記載 ]", en: "[ Outcome ]" },
     link: "https://dev-team-952402855858.us-central1.run.app/",
+    img: "assets/lp-thumb.jpg",
     phph: "landing-page"
   },
   {
@@ -274,6 +275,7 @@ window.WORKS = [
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "公開・運用中。Instagram と相互送客。", en: "Live and in use; mutual traffic with Instagram." },
     link: "https://gr-space-nagano.vercel.app/",
+    img: "assets/grspace-thumb.jpg",
     phph: "gr-space-intro"
   },
   {
