@@ -50,16 +50,17 @@
       const wide = w.group === "B" ? " wide" : "";
       const lock = w.confidential ? `<div class="lock"><span class="lk-ic"></span><span>${t("work.confidential")}</span></div>` : "";
       const tags = (w.tech || []).slice(0, 3).map((x) => `<span class="wt">${x}</span>`).join("");
-      const ext = w.link ? `<span class="wf-ext">${t("work.open")} ↗</span>` : "";
+      const ext = w.link ? `<a class="wf-ext" href="${w.link}" target="_blank" rel="noopener" aria-label="${t("work.open")}">${t("work.open")} ↗</a>` : "";
       return `
       <article class="work${wide} r-up" data-id="${w.id}" data-cursor="${t("work.view")}" tabindex="0" role="button" aria-label="${w.title[lang]}">
         <div class="work-media">
-          <div class="ph ph-stripes"></div>
-          <span class="ph-tag">${w.phph || "media"}</span>
+          ${w.img
+            ? `<img class="work-img" src="${w.img}" alt="${w.title[lang]}" loading="lazy" decoding="async">`
+            : `<div class="ph ph-stripes"></div><span class="ph-tag">${w.phph || "media"}</span>`}
           <span class="work-num">${String(i + 1).padStart(2, "0")}</span>
           ${lock}
           <div class="work-reveal"></div>
-          <div class="work-revtext"><span>${t("work.view")}</span><span>→</span></div>
+          <div class="work-revtext"><span class="rev-pill">${t("work.view")} <span class="ar">→</span></span></div>
         </div>
         <div class="work-body">
           <div class="work-cat"><span class="d"></span>${w.cat[lang]}</div>
@@ -72,7 +73,8 @@
     }).join("");
     grid.querySelectorAll(".work").forEach((el) => {
       const open = () => openModal(el.getAttribute("data-id"));
-      el.addEventListener("click", open);
+      // a real link inside the card (e.g. "Open site") should navigate, not open the modal
+      el.addEventListener("click", (e) => { if (e.target.closest("a")) return; open(); });
       el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
     });
     bindCursorTargets(grid);
@@ -124,7 +126,9 @@
         <button class="wm-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
       </div>
       <div class="wm-body">
-        <div class="wm-media"><div class="ph ph-stripes"></div><div class="ph-label">${w.phph || "media"}</div></div>
+        <div class="wm-media">${w.img
+          ? `<img class="wm-img" src="${w.img}" alt="${w.title[lang]}" loading="lazy" decoding="async">`
+          : `<div class="ph ph-stripes"></div><div class="ph-label">${w.phph || "media"}</div>`}</div>
         <h2>${w.title[lang]}</h2>
         <p class="wm-summary">${w.summary[lang]}</p>
         <div class="wm-block"><div class="wm-k"><span class="n">01</span>${t("wm.challenge")}</div><p>${w.challenge[lang]}</p></div>

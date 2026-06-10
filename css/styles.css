@@ -276,9 +276,9 @@ section { position: relative; }
   50%  { transform: scale(1.20) translate3d(-4%, -3%, 0); }
   100% { transform: scale(1.12) translate3d(3.2%, 2.2%, 0); }
 }
-#hero-canvas { opacity: 0.8; }
+#hero-canvas { opacity: 0.90; }
 [data-theme="light"] #hero-bg { opacity: 0.4; }
-[data-theme="light"] #hero-canvas { opacity: 0.6; }
+[data-theme="light"] #hero-canvas { opacity: 0.70; }
 @media (prefers-reduced-motion: reduce) { #hero-bg { animation: none; transform: scale(1.06); } }
 /* Light scrim only — keep the texture visible across the whole hero (incl. top-left),
    just enough darkening on the left for the headline to stay readable. */
@@ -369,7 +369,9 @@ section { position: relative; }
 /* ---------- About / Strengths (horizontal pin) ---------- */
 .about { background: var(--bg-elev); border-block: 1px solid var(--line); }
 .about-intro { padding-block: var(--section-y) clamp(2rem,5vw,4rem); }
-.about-lead { font-size: var(--fs-h2); font-weight: 500; line-height: 1.18; letter-spacing: -0.02em; max-width: 15ch; }
+/* .about-intro prefix raises specificity above ":lang(ja) p" so this tight heading
+   line-height wins (otherwise the body 1.85 leaks in and the heading becomes very tall) */
+.about-intro .about-lead { font-size: var(--fs-h2); font-weight: 500; line-height: 1.18; letter-spacing: -0.02em; max-width: 15ch; }
 .about-lead .nb { display: inline-block; }
 .about-lead em { color: var(--accent-text); font-style: italic; }
 .about-bio { margin-top: clamp(1.6rem, 3vw, 2.6rem); max-width: 68ch; display: flex; flex-direction: column; gap: 1.1em; }
@@ -409,10 +411,20 @@ section { position: relative; }
 .work .work-media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--line); }
 .work.wide .work-media { aspect-ratio: 21 / 9; }
 .work .ph { position:absolute; inset:0; }
-.work .work-reveal { position:absolute; inset:0; background: var(--accent); transform: scaleY(0); transform-origin: bottom; transition: transform .6s var(--ease-out); z-index: 2; }
+.work .work-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; transition: transform .7s var(--ease-out); }
+.work:hover .work-img { transform: scale(1.04); }
+.work .work-reveal { position:absolute; inset:0; transform: scaleY(0); transform-origin: bottom; transition: transform .6s var(--ease-out); z-index: 2;
+  /* translucent accent veil — keeps the thumbnail readable on hover, with a darker foot for label contrast */
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--accent) 30%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 46%, transparent) 100%); }
 .work:hover .work-reveal { transform: scaleY(1); transform-origin: top; }
-.work .work-revtext { position:absolute; inset:0; z-index:3; display:flex; align-items:center; justify-content:center; gap:.6em; color: var(--accent-ink); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.16em; font-size: var(--fs-mono-lg); opacity:0; transform: translateY(12px); transition: opacity .4s .15s var(--ease-out), transform .5s .15s var(--ease-out); }
+.work .work-revtext { position:absolute; inset:0; z-index:3; display:flex; align-items:center; justify-content:center; opacity:0; transform: translateY(12px); transition: opacity .4s .15s var(--ease-out), transform .5s .15s var(--ease-out); }
 .work:hover .work-revtext { opacity:1; transform: translateY(0); }
+/* solid accent pill keeps the label legible over the translucent veil + thumbnail */
+.work .work-revtext .rev-pill { display:inline-flex; align-items:center; gap:.55em; padding:.7em 1.25em; border-radius:999px; background: var(--accent); color: var(--accent-ink); font-family: var(--font-mono); font-weight:700; text-transform: uppercase; letter-spacing: 0.1em; font-size: var(--fs-mono-lg); box-shadow: 0 10px 26px -10px rgba(0,0,0,.6); }
+.work .work-revtext .rev-pill .ar { transition: transform .35s var(--ease-out); }
+.work:hover .work-revtext .rev-pill .ar { transform: translateX(4px); }
 .work .work-num { position:absolute; right: clamp(0.9rem,2vw,1.5rem); bottom: clamp(0.4rem,1.4vw,0.9rem); z-index:1; font-family: var(--font-mono); font-weight:700; font-size: clamp(2.6rem,6vw,4.2rem); line-height:1; color: transparent; -webkit-text-stroke: 1.2px var(--line-strong); letter-spacing:-0.04em; }
 .work .ph-tag { position:absolute; left: clamp(0.9rem,2vw,1.4rem); top: clamp(0.9rem,2vw,1.4rem); z-index:1; font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing:0.1em; text-transform: uppercase; color: var(--fg-dim); border:1px dashed var(--line-strong); padding:.35em .7em; border-radius:2px; background: color-mix(in srgb, var(--bg-elev) 55%, transparent); }
 .work-body { padding: clamp(1.3rem, 2vw, 1.9rem); display: flex; flex-direction: column; gap: 0.85rem; }
@@ -530,6 +542,7 @@ section { position: relative; }
 .wm-close svg { width: 16px; height: 16px; }
 .wm-body { padding: clamp(1.6rem,3.5vw,3rem); }
 .wm-body .wm-media { aspect-ratio: 16/9; border:1px solid var(--line); border-radius: 4px; position: relative; margin-bottom: clamp(1.6rem,3vw,2.4rem); overflow:hidden; }
+.wm-body .wm-media .wm-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
 .wm-body h2 { font-size: var(--fs-display); font-weight: 500; line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 1rem; }
 .wm-body .wm-summary { color: var(--fg-dim); font-size: var(--fs-lead); margin-bottom: clamp(2rem,4vw,3rem); max-width: 50ch; }
 .wm-block { padding-block: clamp(1.4rem,2.5vw,2rem); border-top: 1px solid var(--line); }

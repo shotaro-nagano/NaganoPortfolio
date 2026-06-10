@@ -108,6 +108,9 @@
       float vig=smoothstep(1.4,0.2,length(p));
       col*=mix(0.86,1.04,vig);
 
+      // per-theme exposure — lift the dark theme (was too dark), settle the light theme (was too bright)
+      col=mix(col*1.24+0.030, col*0.80, u_light);
+
       // grain
       float g=fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233)))*43758.5453);
       col+=(g-0.5)*0.025;

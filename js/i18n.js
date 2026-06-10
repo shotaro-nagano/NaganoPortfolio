@@ -203,6 +203,7 @@ window.WORKS = [
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "Web 版を公開・運用中。iOS 版へ展開中。", en: "Web version live and in use; expanding to iOS." },
     link: "https://project2-six-gules.vercel.app/",
+    img: "assets/ttscore-thumb.jpg",
     phph: "score-tracker-ui"
   },
   {
@@ -226,6 +227,7 @@ window.WORKS = [
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "制作支援ツールとして稼働。", en: "Running as a production-support tool." },
     link: "https://pingpong-pro-designer-187605190392.us-west1.run.app",
+    img: "assets/aidesign-thumb.jpg",
     phph: "ai-design-simulator"
   },
   {
