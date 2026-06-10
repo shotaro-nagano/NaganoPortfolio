@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set theme before first paint to avoid a flash + an on-load color transition. */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Nagano Shotaro — Systems Engineer / AI × Automation × Web</title>
+  <meta name="description" content="システムエンジニア Nagano Shotaro のポートフォリオ。AI活用 × 業務自動化 × Web開発。生成AIとn8nによるワークフロー自動化、Webアプリ開発の実績を掲載。" />
+  <meta name="author" content="Nagano Shotaro" />
+  <meta name="theme-color" content="#0a0b09" />
+
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nagano Shotaro — Systems Engineer / AI × Automation" />
+  <meta property="og:description" content="AI活用 × 業務自動化 × Web開発。見た目はミニマル、動きはリッチなエンジニアポートフォリオ。" />
+  <meta property="og:image" content="assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nagano Shotaro — Systems Engineer / AI × Automation" />
+  <meta name="twitter:description" content="AI活用 × 業務自動化 × Web開発のポートフォリオ。" />
+  <meta name="twitter:image" content="assets/og.png" />
+
+  <!-- favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0b09'/%3E%3Cpath d='M9 23V9h2.4l9.2 9.6V9H23v14h-2.4l-9.2-9.6V23z' fill='%23e8862b'/%3E%3C/svg%3E" />
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=M+PLUS+2:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body lang="ja">
+
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="pl-inner">
+      <div class="pl-name"><span>NAGANO SHOTARO</span><span>PORTFOLIO</span></div>
+      <div class="pl-count">000</div>
+      <div class="pl-bar"><i></i></div>
+    </div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"><span class="clabel"></span></div>
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a class="brand" href="#top"><span class="dot"></span><span>N. SHOTARO</span></a>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="#work"><span class="num">01</span><span data-i18n="nav.work">実績</span></a>
+        <a href="#about"><span class="num">02</span><span data-i18n="nav.about">自己紹介</span></a>
+        <a href="#skills"><span class="num">03</span><span data-i18n="nav.skills">スキル</span></a>
+        <a href="#beyond"><span class="num">04</span><span data-i18n="nav.beyond">その他</span></a>
+        <a href="#contact"><span class="num">05</span><span data-i18n="nav.contact">連絡</span></a>
+      </div>
+      <div class="nav-tools">
+        <button id="lang-btn" class="tool-btn lang-btn" aria-label="Switch language"><b class="ja on">JA</b><span class="sep">/</span><b class="en">EN</b></button>
+        <button id="theme-btn" class="tool-btn theme-btn" aria-label="Toggle theme">
+          <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+        </button>
+        <button class="menu-toggle" aria-label="Menu"><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile menu -->
+  <nav id="mobile-menu">
+    <a href="#work"><span data-i18n="nav.work">実績</span><span class="num">01</span></a>
+    <a href="#about"><span data-i18n="nav.about">自己紹介</span><span class="num">02</span></a>
+    <a href="#skills"><span data-i18n="nav.skills">スキル</span><span class="num">03</span></a>
+    <a href="#beyond"><span data-i18n="nav.beyond">その他</span><span class="num">04</span></a>
+    <a href="#contact"><span data-i18n="nav.contact">連絡</span><span class="num">05</span></a>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top" data-screen-label="Hero">
+      <div id="hero-bg"></div>
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-grain"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-inner">
+        <div class="hero-eyebrow eyebrow" data-i18n="hero.eyebrow">システムエンジニア / AI × 自動化</div>
+        <h1>
+          <span class="line"><span class="splt" data-i18n="hero.l1">業務を、</span></span>
+          <span class="line"><span class="splt" data-i18n="hero.l2a">自動で</span><span class="lsp"> </span><span class="splt accent" data-i18n="hero.l2b">動かす。</span></span>
+        </h1>
+        <p class="hero-lead" data-i18n="hero.lead">AIを活用した業務自動化と、丁寧に作り込んだWebアプリ開発が得意です。静かなUIに、確かな仕組みを。</p>
+        <div class="hero-cta">
+          <a class="btn btn--primary magnetic" href="#work" data-mag="0.3"><span class="btn-t" data-i18n="hero.cta1">実績を見る</span><span class="btn-arrow">→</span></a>
+          <a class="btn magnetic" href="#contact" data-mag="0.3"><span class="btn-t" data-i18n="hero.cta2">連絡する</span><span class="btn-arrow">→</span></a>
+        </div>
+      </div>
+      <div class="hero-name"><span data-i18n="hero.role">システムエンジニア</span><br /><b>Nagano Shotaro</b></div>
+    </section>
+
+    <!-- ABOUT / STRENGTHS (horizontal pin) -->
+    <section class="about" id="about" data-screen-label="Approach / Strengths">
+      <div class="shell about-intro">
+        <div class="section-head">
+          <span class="eyebrow" data-i18n="about.eyebrow">自己紹介 / 強み</span>
+        </div>
+        <p class="about-lead r-up" data-i18n-html="about.lead"><span class="nb"><em>AIと業務自動化</em>を得意とする</span><span class="nb">システムエンジニア。</span></p>
+        <div class="about-bio r-up">
+          <p data-i18n="about.bio1">金融営業からキャリアをスタート。その後、金融機関の社内システム部門でも開発を経験し（Access VBA による帳票出力ツールの開発など）、ITへ本格的に転身しました。PHP / Laravel を中心に業務システム（提案書自動作成システムなど）の開発・保守を担当し、Vue.js や Marketo を用いたWeb・マーケティング施策にも携わってきました。現在はネット銀行の構成管理業務に従事しながら、生成AI・Claude Code を日常的に活用し、HP制作・アプリ開発・業務自動化を手がけています。</p>
+          <p data-i18n="about.bio2">「まず動く」フットワークと、営業で培った“相手目線で考える力”が持ち味です。AIとITで、身近な人や事業の面倒な作業を楽にし、業務全体の改善まで伴走することを目指しています。</p>
+        </div>
+        <div class="about-meta r-up">
+          <div><span class="k" data-i18n="about.metak1">得意領域</span><span class="v" data-i18n="about.metav1">AI活用・業務自動化・Web開発</span></div>
+          <div><span class="k" data-i18n="about.metak3">拠点</span><span class="v" data-i18n="about.metav3">日本 / リモート可</span></div>
+          <div><span class="k">&nbsp;</span><span class="v" style="color:var(--fg-dim)" data-i18n="about.hint">横にスクロール →</span></div>
+        </div>
+      </div>
+      <div class="htrack-wrap">
+        <div class="htrack">
+          <article class="spanel">
+            <div class="spanel-no"><b>01</b> / 04</div>
+            <svg class="glyph" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="27" cy="27" r="8" fill="var(--accent)"/></svg>
+            <div>
+              <h3 data-i18n="about.p1t">AI活用</h3>
+              <p data-i18n="about.p1d">生成AIをプロダクトと業務に実装。設計・検証・運用まで一気通貫で、再現性のある成果に落とし込みます。</p>
+              <div class="spanel-tags"><span class="tag">生成AI</span><span class="tag">設計→運用</span><span class="tag">再現性</span></div>
+            </div>
+          </article>
+          <article class="spanel">
+            <div class="spanel-no"><b>02</b> / 04</div>
+            <svg class="glyph" viewBox="0 0 54 54"><rect x="4" y="4" width="46" height="46" fill="none" stroke="var(--accent)" stroke-width="2"/><rect x="18" y="18" width="18" height="18" fill="var(--accent)"/></svg>
+            <div>
+              <h3 data-i18n="about.p2t">業務自動化</h3>
+              <p data-i18n="about.p2d">提案・在庫・試算といった社内業務を横断で自動化。人手の作業をワークフローに置き換え、判断に集中できる状態をつくります。</p>
+              <div class="spanel-tags"><span class="tag">提案</span><span class="tag">在庫</span><span class="tag">試算</span></div>
+            </div>
+          </article>
+          <article class="spanel">
+            <div class="spanel-no"><b>03</b> / 04</div>
+            <svg class="glyph" viewBox="0 0 54 54"><path d="M27 3l24 42H3z" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="27" cy="33" r="7" fill="var(--accent)"/></svg>
+            <div>
+              <h3 data-i18n="about.p3t">Web開発</h3>
+              <p data-i18n="about.p3d">リアルタイム性・UX・パフォーマンスにこだわったWebアプリ／LPを実装。静かなUIに上質なモーションを添えます。</p>
+              <div class="spanel-tags"><span class="tag">リアルタイム</span><span class="tag">UX</span><span class="tag">パフォーマンス</span></div>
+            </div>
+          </article>
+          <article class="spanel">
+            <div class="spanel-no"><b>04</b> / 04</div>
+            <svg class="glyph" viewBox="0 0 54 54"><rect x="4" y="4" width="46" height="46" rx="23" fill="none" stroke="var(--accent)" stroke-width="2"/><path d="M16 27h22M27 16v22" stroke="var(--accent)" stroke-width="2"/></svg>
+            <div>
+              <h3 data-i18n="about.p4t">ワークフロー自動化</h3>
+              <p data-i18n="about.p4d">n8n と生成AIを組み合わせ、トリガーから配信・投稿までを完全自動化。運用に乗る“仕組み”として設計します。</p>
+              <div class="spanel-tags"><span class="tag">n8n</span><span class="tag">トリガー</span><span class="tag">無人運用</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="about-progress shell"><div class="bar"><i></i></div></div>
+    </section>
+
+    <!-- WORKS -->
+    <section class="works" id="work" data-screen-label="Works">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow" data-i18n="work.eyebrow">実績</span>
+          <h2 class="r-up" data-i18n="work.title">つくったもの。すべて等しく。</h2>
+          <p class="r-up" style="color:var(--fg-dim);max-width:48ch;margin-top:1rem" data-i18n="work.lead">リンクのある案件、守秘案件、自動化パイプライン、その他の開発まで。クリックで詳細を表示します。</p>
+        </div>
+        <div class="works-grid" id="works-grid"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills" data-screen-label="Skills">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow" data-i18n="skills.eyebrow">スキル</span>
+          <h2 class="r-up" data-i18n="skills.title">AI・自動化を中心に。</h2>
+          <p class="r-up" style="color:var(--fg-dim);max-width:46ch;margin-top:1rem" data-i18n="skills.lead">差別化はAI活用とワークフロー自動化。土台となる開発・インフラも一通り。</p>
+        </div>
+        <div class="skill-rows" id="skill-rows"></div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="certs" id="certs" data-screen-label="Certifications">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow" data-i18n="certs.eyebrow">資格 / Certifications</span>
+          <h2 class="r-up" data-i18n="certs.title">取得した資格。</h2>
+        </div>
+        <div class="certs-grid">
+          <div class="cert r-up"><img src="assets/cert-genai-passport.png" alt="生成AIパスポート" loading="lazy" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEYOND -->
+    <section class="beyond" id="beyond" data-screen-label="Beyond Work">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow" data-i18n="beyond.eyebrow">Beyond Work</span>
+          <h2 class="r-up" data-i18n="beyond.title">仕事の外で、つくっているもの。</h2>
+        </div>
+        <div class="beyond-grid">
+          <a class="beyond-card r-up" href="https://www.instagram.com/nyagagram" target="_blank" rel="noopener">
+            <div class="bc-media"><div class="ph ph-stripes"></div><div class="ph-label">photo grid — @nyagagram</div></div>
+            <div class="bc-body">
+              <span class="bc-k" data-i18n="beyond.b1k">写真 / Instagram</span>
+              <h3 data-i18n="beyond.b1t">@nyagagram</h3>
+              <p data-i18n="beyond.b1d">GR で撮りためた写真を発信。専用の紹介サイトも自作しました。</p>
+              <span class="bc-link" data-i18n="beyond.b1link">Instagram を開く</span>
+            </div>
+          </a>
+          <a class="beyond-card r-up" href="https://www.youtube.com/@lofi-space-p7e" target="_blank" rel="noopener">
+            <div class="bc-media"><div class="ph ph-stripes"></div><div class="ph-label">lofi space — visuals</div></div>
+            <div class="bc-body">
+              <span class="bc-k" data-i18n="beyond.b2k">AI 音楽・映像</span>
+              <h3 data-i18n="beyond.b2t">Lofi Space</h3>
+              <p data-i18n="beyond.b2d">生成AIを使った Lofi の音楽・映像制作。健全なコンテンツのみを発信しています。</p>
+              <span class="bc-link" data-i18n="beyond.b2link">チャンネルを開く</span>
+            </div>
+          </a>
+          <a class="beyond-card r-up" href="https://youtube.com/channel/UCzzdKQyJhgm0ciD7rwtCY6w" target="_blank" rel="noopener">
+            <div class="bc-media"><div class="ph ph-stripes"></div><div class="ph-label">card game — youtube</div></div>
+            <div class="bc-body">
+              <span class="bc-k" data-i18n="beyond.b3k">YouTube</span>
+              <h3 data-i18n="beyond.b3t">カードゲーム</h3>
+              <p data-i18n="beyond.b3d">カードゲームをテーマにした動画を制作・投稿しています。</p>
+              <span class="bc-link" data-i18n="beyond.b3link">チャンネルを開く</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee divider -->
+    <div class="marquee" aria-hidden="true">
+      <div class="mq-track">
+        <span class="mq-item"><span data-i18n="mq.1">AI 活用</span><span class="star"></span><span data-i18n="mq.2">業務自動化</span><span class="star"></span><span data-i18n="mq.3">Web 開発</span><span class="star"></span><span data-i18n="mq.4">n8n</span><span class="star"></span><span data-i18n="mq.5">生成AI</span><span class="star"></span></span>
+        <span class="mq-item"><span data-i18n="mq.1">AI 活用</span><span class="star"></span><span data-i18n="mq.2">業務自動化</span><span class="star"></span><span data-i18n="mq.3">Web 開発</span><span class="star"></span><span data-i18n="mq.4">n8n</span><span class="star"></span><span data-i18n="mq.5">生成AI</span><span class="star"></span></span>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact" data-screen-label="Contact">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow" data-i18n="contact.eyebrow">連絡</span>
+        </div>
+        <div class="contact-cta">
+          <span class="ctitle"><span data-i18n="contact.ctitle1">話しましょう。</span> <a class="mail-link magnetic" href="mailto:naganosyotaro@gmail.com" data-mag="0.2">naganosyotaro@gmail.com</a></span>
+        </div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:naganosyotaro@gmail.com">
+            <span class="cl-k" data-i18n="contact.mailk">メール</span>
+            <span class="cl-v">naganosyotaro@gmail.com <span class="arr">↗</span></span>
+          </a>
+          <a class="contact-link" href="https://github.com/shotaro-nagano" target="_blank" rel="noopener">
+            <span class="cl-k" data-i18n="contact.githubk">GitHub</span>
+            <span class="cl-v">github.com/shotaro-nagano <span class="arr">↗</span></span>
+          </a>
+          <div class="contact-link soon">
+            <span class="cl-k" data-i18n="contact.resumek">職務経歴書 (PDF)</span>
+            <span class="cl-v"><span data-i18n="contact.resumev">準備中</span></span>
+            <span class="cl-tag" data-i18n="contact.resumetag">近日公開</span>
+          </div>
+        </div>
+        <div class="footer-bar">
+          <span data-i18n="contact.rights">システムエンジニア / AI × 自動化 × Web</span>
+          <span>© <span id="year">2026</span> Nagano Shotaro</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Works modal -->
+  <div id="work-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="wm-scrim"></div>
+    <div class="wm-panel"><div class="wm-inner"></div></div>
+  </div>
+
+  <!-- Vertical scroll indicator (right edge) -->
+  <div id="scroll-rail" aria-hidden="true">
+    <span class="sr-text">SCROLL</span>
+    <span class="sr-line"><i></i></span>
+  </div>
+
+  <!-- Back to top -->
+  <button id="to-top-fab" aria-label="ページ上部へ戻る" data-cursor="TOP">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg>
+  </button>
+
+  <!-- libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
+  <!-- app -->
+  <script src="js/i18n.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
