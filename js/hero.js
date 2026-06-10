@@ -83,24 +83,26 @@
     void main(){
       vec2 uv=vUv;
       vec2 p=(gl_FragCoord.xy*2.0-u_res)/min(u_res.x,u_res.y);
-      float t=u_time*0.06;
+      float t=u_time*0.13;
 
       vec2 m=(u_mouse-0.5)*2.0;
       float md=distance(p, m*1.1);
-      // domain warp
-      vec2 q=vec2(fbm(p*1.1+vec2(0.0,t)), fbm(p*1.1+vec2(5.2,t*1.3)));
-      vec2 r=vec2(fbm(p*1.1+q*1.4+vec2(1.7,9.2)+t*0.4), fbm(p*1.1+q*1.4+vec2(8.3,2.8)));
-      float f=fbm(p*1.2+r*1.2 - m*0.35);
+      // domain warp — extra drift terms so it always flows, even without the mouse
+      vec2 q=vec2(fbm(p*1.15+vec2(sin(t*0.6)*0.4,t)), fbm(p*1.15+vec2(5.2,t*1.3)));
+      vec2 r=vec2(fbm(p*1.15+q*1.6+vec2(1.7,9.2)+t*0.55), fbm(p*1.15+q*1.6+vec2(8.3,2.8)-t*0.35));
+      float f=fbm(p*1.25+r*1.35 - m*0.35);
 
       f=f*0.5+0.5;
-      float ripple=smoothstep(0.6,0.0,md)*(0.12+u_mvel*0.6);
+      float ripple=smoothstep(0.62,0.0,md)*(0.16+u_mvel*0.7);
       f+=ripple;
+      // slow breathing pulse keeps the field alive at rest
+      f+=0.04*sin(t*1.8+f*6.2831);
 
-      vec3 col=mix(u_bg,u_elev, smoothstep(0.18,0.9,f));
-      float acc=smoothstep(0.70,1.0,f+r.x*0.15);
-      acc*= (0.16 + u_mvel*1.5);
-      acc*= smoothstep(0.9,0.12,md)*0.85+0.10;
-      col=mix(col,u_accent, clamp(acc,0.0,1.0)*0.42);
+      vec3 col=mix(u_bg,u_elev, smoothstep(0.16,0.92,f));
+      float acc=smoothstep(0.66,1.0,f+r.x*0.18);
+      acc*= (0.26 + u_mvel*1.6);
+      acc*= smoothstep(0.95,0.10,md)*0.85+0.16;
+      col=mix(col,u_accent, clamp(acc,0.0,1.0)*0.55);
 
       // gentle vignette
       float vig=smoothstep(1.4,0.2,length(p));

@@ -110,12 +110,15 @@ body {
 :lang(ja) p, :lang(ja) li, :lang(ja) .hero-lead, :lang(ja) .work-sum {
   line-height: 1.85;
   line-break: strict;                     /* proper kinsoku line-breaking */
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;              /* only break genuinely long tokens, keep words like "Vue.js" intact */
+  word-break: auto-phrase;                /* natural Japanese phrase breaks (progressive enhancement) */
 }
 :lang(ja) h1, :lang(ja) h2, :lang(ja) h3, :lang(ja) .about-lead, :lang(ja) .ctitle {
   line-break: strict;
+  word-break: auto-phrase;
 }
-h1, h2, h3, .about-lead, .hero-lead, .work-sum { text-wrap: pretty; }
+h1, h2, h3, .about-lead, .ctitle { text-wrap: balance; }   /* even line lengths for short headings */
+.hero-lead, .work-sum, .about-bio p { text-wrap: pretty; }
 
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -265,10 +268,18 @@ section { position: relative; }
 .hero h1 .lsp { display: none; }
 :lang(en) .hero h1 .lsp { display: inline; }
 /* placeholder hero background image: backmost, faded, under WebGL + overlay */
-#hero-bg { position:absolute; inset:0; z-index:0; background-image: var(--hero-img, url("../assets/hero-bg.png")); background-size: cover; background-position: center; opacity: 0.82; }
-#hero-canvas { opacity: 0.45; }
+#hero-bg { position:absolute; inset:0; z-index:0; background-image: var(--hero-img, url("../assets/hero-bg.png")); background-size: cover; background-position: center; opacity: 0.82;
+  will-change: transform; transform-origin: 60% 40%;
+  animation: heroDrift 30s var(--ease-inout) infinite alternate; }
+@keyframes heroDrift {
+  0%   { transform: scale(1.08) translate3d(0%, 0%, 0); }
+  50%  { transform: scale(1.16) translate3d(-2.2%, -1.6%, 0); }
+  100% { transform: scale(1.10) translate3d(1.8%, 1.2%, 0); }
+}
+#hero-canvas { opacity: 0.62; }
 [data-theme="light"] #hero-bg { opacity: 0.38; }
-[data-theme="light"] #hero-canvas { opacity: 0.4; }
+[data-theme="light"] #hero-canvas { opacity: 0.5; }
+@media (prefers-reduced-motion: reduce) { #hero-bg { animation: none; transform: scale(1.06); } }
 .hero-overlay { position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
     linear-gradient(180deg, color-mix(in srgb,var(--bg) 35%,transparent) 0%, transparent 22%, transparent 62%, var(--bg) 100%),
@@ -354,7 +365,7 @@ section { position: relative; }
 /* ---------- About / Strengths (horizontal pin) ---------- */
 .about { background: var(--bg-elev); border-block: 1px solid var(--line); }
 .about-intro { padding-block: var(--section-y) clamp(2rem,5vw,4rem); }
-.about-lead { font-size: clamp(1.45rem, 2.6vw, 2.5rem); font-weight: 500; line-height: 1.35; letter-spacing: -0.015em; max-width: 34ch; }
+.about-lead { font-size: var(--fs-h2); font-weight: 500; line-height: 1.12; letter-spacing: -0.02em; max-width: 22ch; }
 .about-lead .nb { display: inline-block; }
 .about-lead em { color: var(--accent-text); font-style: italic; }
 .about-bio { margin-top: clamp(1.6rem, 3vw, 2.6rem); max-width: 68ch; display: flex; flex-direction: column; gap: 1.1em; }
