@@ -30,7 +30,7 @@ window.I18N = {
     "hi.note": "※差し替え",
     "hi.yr": "年",
     "about.eyebrow": "自己紹介 / 強み",
-    "about.lead": "<span class='nb'><em>AIと業務自動化</em>を得意とする</span><span class='nb'>システムエンジニア。</span>",
+    "about.lead": "<span class='nb'><em>AIと業務自動化</em>を</span><span class='nb'>得意とする</span><span class='nb'>システムエンジニア。</span>",
     "about.bio1": "金融営業からキャリアをスタート。その後、金融機関の社内システム部門でも開発を経験し（Access VBA による帳票出力ツールの開発など）、ITへ本格的に転身しました。PHP / Laravel を中心に業務システム（提案書自動作成システムなど）の開発・保守を担当し、Vue.js や Marketo を用いたWeb・マーケティング施策にも携わってきました。現在はネット銀行の構成管理業務に従事しながら、生成AI・Claude Code を日常的に活用し、HP制作・アプリ開発・業務自動化を手がけています。",
     "about.bio2": "「まず動く」フットワークと、営業で培った“相手目線で考える力”が持ち味です。AIとITで、身近な人や事業の面倒な作業を楽にし、業務全体の改善まで伴走することを目指しています。",
     "about.metak1": "得意領域",

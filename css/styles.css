@@ -371,8 +371,9 @@ section { position: relative; }
 .about-intro { padding-block: var(--section-y) clamp(2rem,5vw,4rem); }
 /* .about-intro prefix raises specificity above ":lang(ja) p" so this tight heading
    line-height wins (otherwise the body 1.85 leaks in and the heading becomes very tall) */
-.about-intro .about-lead { font-size: var(--fs-h2); font-weight: 500; line-height: 1.18; letter-spacing: -0.02em; max-width: 15ch; }
-.about-lead .nb { display: inline-block; }
+.about-intro .about-lead { font-size: var(--fs-h2); font-weight: 500; line-height: 1.22; letter-spacing: -0.02em; max-width: 20ch; }
+/* each .nb is a whole phrase; nowrap so JP breaks only BETWEEN phrases (no mid-phrase orphans) */
+.about-lead .nb { display: inline-block; white-space: nowrap; }
 .about-lead em { color: var(--accent-text); font-style: italic; }
 .about-bio { margin-top: clamp(1.6rem, 3vw, 2.6rem); max-width: 68ch; display: flex; flex-direction: column; gap: 1.1em; }
 .about-bio p { color: var(--fg-dim); font-size: var(--fs-body); line-height: 1.95; }
@@ -474,7 +475,9 @@ section { position: relative; }
 .beyond-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem,2vw,1.8rem); }
 .beyond-card { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--bg-elev); display: flex; flex-direction: column; min-height: 360px; position: relative; transition: border-color .4s, transform .5s var(--ease-out); }
 .beyond-card:hover { border-color: var(--line-strong); transform: translateY(-4px); }
-.beyond-card .bc-media { aspect-ratio: 4/3; position: relative; }
+.beyond-card .bc-media { aspect-ratio: 4/3; position: relative; overflow: hidden; }
+.beyond-card .bc-media .bc-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center; display:block; transition: transform .6s var(--ease-out); }
+.beyond-card:hover .bc-media .bc-img { transform: scale(1.04); }
 .beyond-card .bc-body { padding: clamp(1.2rem,2vw,1.8rem); display: flex; flex-direction: column; gap: .7rem; flex: 1; }
 .beyond-card .bc-k { font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-dim); }
 .beyond-card h3 { font-size: var(--fs-h3); font-weight: 500; letter-spacing: -0.01em; }
@@ -616,6 +619,8 @@ html.no-motion #scroll-progress { display: none; }
   .contact-links { gap: 2rem; }
   .contact-link .cl-v { font-size: clamp(1.1rem, 5vw, 1.5rem); overflow-wrap: anywhere; }
   .footer-bar { flex-direction: column; align-items: flex-start; gap: .8rem; }
+  /* phones: let the heading use full width and shrink enough that each phrase fits one line */
+  .about-intro .about-lead { max-width: none; font-size: clamp(1.55rem, 6.2vw, 2.4rem); }
 }
 @media (max-width: 640px) {
   .work, .work.wide { grid-column: span 12; }
