@@ -268,7 +268,7 @@ section { position: relative; }
 .hero h1 .lsp { display: none; }
 :lang(en) .hero h1 .lsp { display: inline; }
 /* placeholder hero background image: backmost, faded, under WebGL + overlay */
-#hero-bg { position:absolute; inset:0; z-index:0; background-image: var(--hero-img, url("../assets/hero-bg.png")); background-size: cover; background-position: center; opacity: 0.82;
+#hero-bg { position:absolute; inset:0; z-index:0; background-image: var(--hero-img, url("../assets/hero-bg.png")); background-size: cover; background-position: center; opacity: 0.55;
   will-change: transform; transform-origin: 60% 40%;
   animation: heroDrift 20s var(--ease-inout) infinite alternate; }
 @keyframes heroDrift {
@@ -280,10 +280,12 @@ section { position: relative; }
 [data-theme="light"] #hero-bg { opacity: 0.4; }
 [data-theme="light"] #hero-canvas { opacity: 0.6; }
 @media (prefers-reduced-motion: reduce) { #hero-bg { animation: none; transform: scale(1.06); } }
+/* Light scrim only — keep the texture visible across the whole hero (incl. top-left),
+   just enough darkening on the left for the headline to stay readable. */
 .hero-overlay { position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
-    linear-gradient(180deg, color-mix(in srgb,var(--bg) 35%,transparent) 0%, transparent 22%, transparent 62%, var(--bg) 100%),
-    linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb,var(--bg) 55%,transparent) 30%, color-mix(in srgb,var(--bg) 8%,transparent) 58%, transparent 78%); }
+    linear-gradient(180deg, color-mix(in srgb,var(--bg) 22%,transparent) 0%, transparent 30%, transparent 68%, var(--bg) 100%),
+    linear-gradient(90deg, color-mix(in srgb,var(--bg) 40%,transparent) 0%, color-mix(in srgb,var(--bg) 14%,transparent) 40%, transparent 74%); }
 #hero-canvas { position: absolute; inset: 0; z-index: 0; }
 .hero-grain { position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.4; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); }
