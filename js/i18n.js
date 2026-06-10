@@ -199,7 +199,7 @@ window.WORKS = [
       ja: ["リアルタイムに得点を加算・補正できる UI を設計", "状態管理とスコアロジックを実装", "iOS ネイティブ版への移行を進行中"],
       en: ["Designed a UI for incrementing and correcting scores in real time", "Built the state management and scoring logic", "Porting to a native iOS build (in progress)"]
     },
-    tech: ["[ 言語 ]", "[ FW ]", "Vercel"],
+    tech: ["JavaScript", "Vercel"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "Web 版を公開・運用中。iOS 版へ展開中。", en: "Web version live and in use; expanding to iOS." },
     link: "https://project2-six-gules.vercel.app/",
@@ -223,7 +223,7 @@ window.WORKS = [
       ja: ["生成AIによるデザイン生成フローを構築", "用途に合わせた入力・プレビュー UI を実装", "デザイン会社の制作工程に組み込み"],
       en: ["Built a generative-AI design pipeline", "Implemented input and preview UI tailored to the use case", "Integrated it into the design company's workflow"]
     },
-    tech: ["生成AI", "[ モデル/API ]", "Google Cloud Run"],
+    tech: ["生成AI", "画像生成", "Google Cloud Run"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "制作支援ツールとして稼働。", en: "Running as a production-support tool." },
     link: "https://pingpong-pro-designer-187605190392.us-west1.run.app",
@@ -247,7 +247,7 @@ window.WORKS = [
       ja: ["構成・コピー設計から実装まで担当", "表示パフォーマンスを最適化", "クラウドへデプロイ・公開"],
       en: ["Owned structure, copy and implementation", "Optimised loading performance", "Deployed and shipped to the cloud"]
     },
-    tech: ["[ 言語 ]", "[ FW ]", "Google Cloud Run"],
+    tech: ["HTML / CSS / JavaScript", "Google Cloud Run"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "[ 成果を記載 ]", en: "[ Outcome ]" },
     link: "https://dev-team-952402855858.us-central1.run.app/",
@@ -271,7 +271,7 @@ window.WORKS = [
       ja: ["写真を主役にしたミニマルな構成を設計", "Instagram への導線を実装", "Beyond Work の写真活動と相互リンク"],
       en: ["Designed a minimal, photo-first layout", "Built the flow through to Instagram", "Cross-linked with the photography in Beyond Work"]
     },
-    tech: ["[ 言語 ]", "[ FW ]", "Vercel"],
+    tech: ["HTML / CSS / JavaScript", "Vercel"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "公開・運用中。Instagram と相互送客。", en: "Live and in use; mutual traffic with Instagram." },
     link: "https://gr-space-nagano.vercel.app/",
@@ -310,7 +310,7 @@ window.WORKS = [
         "Built a replacement-estimate system, automating proposal → inventory → estimate end to end"
       ]
     },
-    tech: ["業務自動化", "[ 技術スタック ]", "[ AI / API ]"],
+    tech: ["PHP / Laravel", "Vue.js", "Bootstrap", "Marketo", "MySQL"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "社内業務を横断で自動化し、社長賞を受賞。作業時間削減 [   ]%。", en: "Automated internal work across teams; awarded the President's Award. [   ]% reduction in working time." },
     resultPh: true,
@@ -355,7 +355,7 @@ window.WORKS = [
     summary: { ja: "練習メニューと記録を管理するシステム。", en: "A system for managing training menus and records." },
     challenge: { ja: "[ 課題を記載 ]", en: "[ Challenge ]" },
     did: { ja: ["練習記録の管理機能を実装", "[ 担当範囲を記載 ]"], en: ["Built training-record management", "[ Scope ]"] },
-    tech: ["[ 言語 ]", "[ FW ]"],
+    tech: ["Java", "Spring Boot", "Thymeleaf", "Docker", "AWS", "MySQL"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "[ 成果を記載 ]", en: "[ Outcome ]" },
     phph: "training-manager"
@@ -397,18 +397,18 @@ window.SKILLS = [
   },
   {
     title: { ja: "言語", en: "Languages" },
-    chips: ["[ 言語 1 ]", "[ 言語 2 ]", "[ 言語 3 ]"]
+    chips: ["Java", "PHP", "JavaScript", "HTML5 / CSS3", "SQL", "VBA"]
   },
   {
     title: { ja: "フレームワーク", en: "Frameworks" },
-    chips: ["[ FW 1 ]", "[ FW 2 ]", "[ FW 3 ]"]
+    chips: ["Spring Boot", "Laravel", "Vue.js", "Bootstrap", "jQuery", "Thymeleaf"]
   },
   {
     title: { ja: "クラウド / インフラ", en: "Cloud / Infra" },
-    chips: ["Vercel", "Google Cloud Run", "[ その他 ]"]
+    chips: ["Vercel", "Google Cloud Run", "AWS", "Docker"]
   },
   {
     title: { ja: "その他ツール", en: "Other tools" },
-    chips: ["[ ツール 1 ]", "[ ツール 2 ]", "[ ツール 3 ]"]
+    chips: ["Git / GitHub / GitLab", "CircleCI", "Jenkins", "Marketo", "MySQL", "VS Code"]
   }
 ];

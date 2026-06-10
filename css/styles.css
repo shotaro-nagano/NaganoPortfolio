@@ -568,9 +568,18 @@ section { position: relative; }
 .wm-confidential .conf-mk { flex:0 0 auto; width: 12px; height: 12px; background: var(--accent); }
 
 /* ---------- Marquee (contact divider) ---------- */
-.marquee { overflow: hidden; border-block: 1px solid var(--line); padding-block: clamp(1rem,2vw,1.6rem); white-space: nowrap; }
-.marquee .mq-track { display: inline-flex; gap: 2.5rem; will-change: transform; }
-.marquee .mq-item { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.6rem,3.5vw,3rem); letter-spacing: -0.02em; color: var(--fg-faint); display:inline-flex; align-items:center; gap: 2.5rem; }
+.marquee { position: relative; overflow: hidden; border-block: 1px solid var(--line); padding-block: clamp(1.3rem,2.4vw,2.1rem); white-space: nowrap;
+  /* accent-tinted band so it echoes the hero instead of flat black */
+  background:
+    radial-gradient(130% 200% at 8% 50%, var(--accent-soft) 0%, transparent 52%),
+    radial-gradient(130% 200% at 92% 50%, color-mix(in srgb, var(--accent) 9%, transparent) 0%, transparent 52%),
+    var(--bg-elev); }
+/* faint hero texture, same image as the title background */
+.marquee::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image: var(--hero-img, url("../assets/hero-bg.png")); background-size: cover; background-position: center; opacity: .16; }
+[data-theme="light"] .marquee::before { opacity: .08; }
+.marquee .mq-track { position: relative; z-index: 1; display: inline-flex; gap: 2.5rem; will-change: transform; }
+.marquee .mq-item { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.6rem,3.5vw,3rem); letter-spacing: -0.02em; color: var(--fg-dim); display:inline-flex; align-items:center; gap: 2.5rem; }
 .marquee .mq-item .star { width: 16px; height: 16px; background: var(--accent); clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
 
 /* ---------- Reveal utility ---------- */
