@@ -48,15 +48,16 @@
     if (!grid) return;
     grid.innerHTML = works.map((w, i) => {
       const wide = w.group === "B" ? " wide" : "";
+      const small = (w.group === "C" || w.group === "D") ? " small" : "";
       const lock = w.confidential ? `<div class="lock"><span class="lk-ic"></span><span>${t("work.confidential")}</span></div>` : "";
       const tags = (w.tech || []).slice(0, 3).map((x) => `<span class="wt">${x}</span>`).join("");
       const ext = w.link ? `<a class="wf-ext" href="${w.link}" target="_blank" rel="noopener" aria-label="${t("work.open")}">${t("work.open")} ↗</a>` : "";
       const award = w.award ? `<span class="work-award"><span class="star"></span>${t("hi.award")}</span>` : "";
       return `
-      <article class="work${wide} r-up" data-id="${w.id}" data-cursor="${t("work.view")}" tabindex="0" role="button" aria-label="${w.title[lang]}">
+      <article class="work${wide}${small} r-up" data-id="${w.id}" data-cursor="${t("work.view")}" tabindex="0" role="button" aria-label="${w.title[lang]}">
         <div class="work-media">
           ${w.img
-            ? `<img class="work-img" src="${w.img}" alt="${w.title[lang]}" loading="lazy" decoding="async">`
+            ? `<img class="work-img-bg" src="${w.img}" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="work-img" src="${w.img}" alt="${w.title[lang]}" loading="lazy" decoding="async">`
             : `<div class="ph ph-stripes"></div><span class="ph-tag">${w.phph || "media"}</span>`}
           <span class="work-num">${String(i + 1).padStart(2, "0")}</span>
           ${lock}
@@ -129,7 +130,7 @@
       </div>
       <div class="wm-body">
         <div class="wm-media">${w.img
-          ? `<img class="wm-img" src="${w.img}" alt="${w.title[lang]}" loading="lazy" decoding="async">`
+          ? `<img class="wm-img-bg" src="${w.img}" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="wm-img" src="${w.img}" alt="${w.title[lang]}" loading="lazy" decoding="async">`
           : `<div class="ph ph-stripes"></div><div class="ph-label">${w.phph || "media"}</div>`}</div>
         <h2>${w.title[lang]}</h2>
         <p class="wm-summary">${w.summary[lang]}</p>
@@ -451,28 +452,15 @@
       });
     }
 
-    // Marquee
+    // Logo marquee — smooth seamless scroll that eases to a pause on hover
     const mq = document.querySelector(".mq-track");
     if (mq && !REDUCE) {
       const w = mq.scrollWidth / 2;
-      gsap.to(mq, { x: -w, duration: 22, ease: "none", repeat: -1, modifiers: { x: (x) => (parseFloat(x) % w) + "px" } });
-      // velocity-reactive skew on the marquee band
+      const tween = gsap.to(mq, { x: -w, duration: 40, ease: "none", repeat: -1, modifiers: { x: (x) => (parseFloat(x) % w) + "px" } });
       const band = document.querySelector(".marquee");
       if (band) {
-        const clampSkew = gsap.utils.clamp(-7, 7);
-        const proxy = { skew: 0 };
-        ScrollTrigger.create({
-          onUpdate: (self) => {
-            const s = clampSkew(self.getVelocity() / -260);
-            if (Math.abs(s) > Math.abs(proxy.skew)) {
-              proxy.skew = s;
-              gsap.to(proxy, {
-                skew: 0, duration: 0.8, ease: "power3", overwrite: true,
-                onUpdate: () => { band.style.transform = "skewX(" + proxy.skew.toFixed(2) + "deg)"; }
-              });
-            }
-          }
-        });
+        band.addEventListener("pointerenter", () => gsap.to(tween, { timeScale: 0, duration: 0.6, overwrite: true }));
+        band.addEventListener("pointerleave", () => gsap.to(tween, { timeScale: 1, duration: 0.6, overwrite: true }));
       }
     }
   }

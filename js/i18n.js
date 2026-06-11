@@ -374,6 +374,7 @@ window.WORKS = [
     tech: ["[ 言語 ]", "[ FW ]"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "[ 成果を記載 ]", en: "[ Outcome ]" },
+    img: "assets/ec-thumb.jpg",
     phph: "apparel-ec"
   },
   {
@@ -387,6 +388,7 @@ window.WORKS = [
     tech: ["[ 言語 ]", "[ FW ]"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "[ 成果を記載 ]", en: "[ Outcome ]" },
+    img: "assets/shift-thumb.jpg",
     phph: "shift-manager"
   }
 ];
