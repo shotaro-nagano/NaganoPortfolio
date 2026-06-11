@@ -51,6 +51,7 @@
       const lock = w.confidential ? `<div class="lock"><span class="lk-ic"></span><span>${t("work.confidential")}</span></div>` : "";
       const tags = (w.tech || []).slice(0, 3).map((x) => `<span class="wt">${x}</span>`).join("");
       const ext = w.link ? `<a class="wf-ext" href="${w.link}" target="_blank" rel="noopener" aria-label="${t("work.open")}">${t("work.open")} ↗</a>` : "";
+      const award = w.award ? `<span class="work-award"><span class="star"></span>${t("hi.award")}</span>` : "";
       return `
       <article class="work${wide} r-up" data-id="${w.id}" data-cursor="${t("work.view")}" tabindex="0" role="button" aria-label="${w.title[lang]}">
         <div class="work-media">
@@ -65,6 +66,7 @@
         <div class="work-body">
           <div class="work-cat"><span class="d"></span>${w.cat[lang]}</div>
           <h3>${w.title[lang]}</h3>
+          ${award}
           <p class="work-sum">${w.summary[lang]}</p>
           <div class="work-tags">${tags}</div>
           <div class="work-foot"><span class="wf-view">${t("work.view")} <span class="ar">→</span></span>${ext}</div>

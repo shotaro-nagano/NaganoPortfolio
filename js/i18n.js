@@ -49,7 +49,7 @@ window.I18N = {
     "about.p4t": "ワークフロー自動化",
     "about.p4d": "n8n と生成AIを組み合わせ、トリガーから配信・投稿までを完全自動化。運用に乗る“仕組み”として設計します。",
     "work.eyebrow": "実績",
-    "work.title": "これまでの制作・開発実績",
+    "work.title": "<span class='nb'>これまでの</span><span class='nb'>制作・開発実績</span>",
     "work.lead": "リンクのある案件、守秘案件、自動化パイプライン、その他の開発まで。クリックで詳細を表示します。",
     "work.view": "詳細を見る",
     "work.confidential": "守秘のため非公開",
@@ -66,7 +66,7 @@ window.I18N = {
     "certs.eyebrow": "資格 / Certifications",
     "certs.title": "取得した資格。",
     "beyond.eyebrow": "Beyond Work",
-    "beyond.title": "仕事の外で、つくっているもの。",
+    "beyond.title": "<span class='nb'>仕事の外で、</span><span class='nb'>つくっているもの。</span>",
     "beyond.b1k": "写真 / Instagram",
     "beyond.b1t": "@nyagagram",
     "beyond.b1d": "GR で撮りためた写真を発信。専用の紹介サイトも自作しました。",
@@ -314,6 +314,7 @@ window.WORKS = [
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "社内業務を横断で自動化し、社長賞を受賞。作業時間削減 [   ]%。", en: "Automated internal work across teams; awarded the President's Award. [   ]% reduction in working time." },
     resultPh: true,
+    img: "assets/kenki-thumb.jpg",
     phph: "confidential — diagram only"
   },
   {
@@ -345,6 +346,7 @@ window.WORKS = [
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     note: { ja: "※ 運用フロー・技術構成のみを紹介。生成物そのものは掲載しません。", en: "Note: only the workflow and architecture are shown — not the generated output itself." },
     result: { ja: "生成から投稿までを完全自動化し、無人運用を実現。", en: "Fully automated from generation to posting — running unattended." },
+    img: "assets/n8n-thumb.jpg",
     phph: "pipeline diagram"
   },
   {
@@ -358,6 +360,7 @@ window.WORKS = [
     tech: ["Java", "Spring Boot", "Thymeleaf", "Docker", "AWS", "MySQL"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "[ 成果を記載 ]", en: "[ Outcome ]" },
+    img: "assets/athlete-thumb.jpg",
     phph: "training-manager"
   },
   {
