@@ -376,10 +376,15 @@ section { position: relative; }
 /* each .nb is a whole phrase; nowrap so JP breaks only BETWEEN phrases (no mid-phrase orphans) */
 .about-lead .nb { display: inline-block; white-space: nowrap; }
 .about-lead em { color: var(--accent-text); font-style: italic; }
-/* single wide column, numbered as a 4-chapter story; the mono index hangs in a left column */
-.about-bio { margin-top: clamp(1.6rem, 3vw, 2.6rem); max-width: min(108ch, 100%); display: flex; flex-direction: column; gap: clamp(1.4rem, 2.4vw, 2.1rem); counter-reset: bio; }
-.about-bio p { color: var(--fg); font-size: var(--fs-body); line-height: 1.95; display: grid; grid-template-columns: minmax(2.2em, auto) 1fr; column-gap: clamp(1rem, 2vw, 1.7rem); align-items: start; }
-.about-bio p::before { counter-increment: bio; content: counter(bio, decimal-leading-zero); font-family: var(--font-mono); font-weight: 500; font-size: var(--fs-mono); color: var(--accent-text); letter-spacing: 0.08em; padding-top: 0.5em; }
+/* 4-chapter story on a vertical timeline; chapters cascade in top→bottom on scroll (JS),
+   the spine is drawn downward (scaleY) by GSAP. Numbers sit on the line as nodes. */
+.about-bio { position: relative; margin-top: clamp(1.6rem, 3vw, 2.6rem); max-width: min(108ch, 100%); display: flex; flex-direction: column; gap: clamp(1.8rem, 3vw, 2.8rem); counter-reset: bio; }
+.about-bio .bio-spine { position: absolute; left: 0.5rem; top: 0.85em; bottom: 0.8em; width: 1px; background: linear-gradient(180deg, transparent, var(--accent) 8%, var(--accent) 92%, transparent); opacity: .4; transform-origin: top center; pointer-events: none; }
+.about-bio p { position: relative; display: grid; grid-template-columns: minmax(3.6em, auto) 1fr; column-gap: clamp(1.1rem, 2vw, 1.9rem); align-items: start; color: var(--fg); font-size: var(--fs-body); line-height: 1.95; }
+/* node dot riding on the timeline spine */
+.about-bio p::after { content: ""; position: absolute; left: 0.5rem; top: 0.95em; width: 7px; height: 7px; transform: translate(-50%, -50%); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg-elev), 0 0 12px var(--accent-glow); z-index: 1; }
+/* chapter index — larger display figure beside its node */
+.about-bio p::before { counter-increment: bio; content: counter(bio, decimal-leading-zero); justify-self: start; align-self: start; padding: 0.36em 0 0 1.5rem; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.1rem, 1.6vw, 1.4rem); line-height: 1; letter-spacing: 0.02em; color: var(--accent-text); font-variant-numeric: tabular-nums; }
 .about-meta { margin-top: clamp(2rem,4vw,3.5rem); display: flex; flex-wrap: wrap; gap: clamp(1.5rem,4vw,4rem); font-family: var(--font-mono); font-size: var(--fs-mono); color: var(--fg-dim); }
 .about-meta .k { color: var(--fg-faint); display:block; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: .4em; }
 .about-meta .v { color: var(--fg); font-size: var(--fs-mono-lg); }
@@ -577,7 +582,8 @@ section { position: relative; }
 .work-body .work-foot .wf-view .ar { color: var(--accent-text); transition: transform .35s var(--ease-out); }
 .work:hover .work-body .work-foot .wf-view .ar { transform: translateX(4px); }
 .work-body .work-foot .wf-ext { color: var(--accent-text); display:flex; gap:.45em; align-items:center; }
-.work .lock { position: absolute; top: clamp(0.9rem,2vw,1.4rem); left: clamp(0.9rem,2vw,1.4rem); z-index: 4; font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent); padding: .4em .75em; border-radius: 999px; display:flex; gap:.5em; align-items:center; }
+/* confidential badge — inline at the top of the card body (above category & title) on all sizes */
+.work .lock { align-self: flex-start; font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent); padding: .4em .75em; border-radius: 999px; display:flex; gap:.5em; align-items:center; }
 .work .lock .lk-ic { width:6px; height:6px; background: var(--accent-ink); border-radius:50%; }
 
 /* striped placeholder */
@@ -617,6 +623,8 @@ section { position: relative; }
 /* @nyagagram banner is a wide 16:9 image with the wordmark on the left; bias the 4:3
    crop left so "@nyagagram" stays fully visible (mobile 16/7 shows the full width) */
 .beyond-card[href*="nyagagram"] .bc-img { object-position: left top; }
+/* ぴかお banner — same: keep the left "ぴかお" wordmark visible in the 4:3 crop */
+.beyond-card[href*="UCzzdKQ"] .bc-img { object-position: left top; }
 .beyond-card .bc-body { padding: clamp(1.2rem,2vw,1.8rem); display: flex; flex-direction: column; gap: .7rem; flex: 1; }
 .beyond-card .bc-k { font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-dim); }
 .beyond-card h3 { font-size: var(--fs-h3); font-weight: 500; letter-spacing: -0.01em; }
@@ -628,7 +636,7 @@ section { position: relative; }
 .contact { padding-block: var(--section-y) clamp(3rem,5vw,5rem); border-top: 1px solid var(--line); }
 .contact-cta { display: block; }
 .contact-cta .ctitle { font-size: clamp(1.5rem, 4.2vw, 3.2rem); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; }
-.contact-cta .mail-link { color: var(--accent-text); display: inline-block; position: relative; word-break: break-word; }
+.contact-cta .mail-link { color: var(--accent-text); display: inline-block; position: relative; word-break: normal; overflow-wrap: break-word; }
 .contact-cta .mail-link::after { content:""; position:absolute; left:0; bottom:0.08em; height:3px; width:100%; background: var(--accent); transform: scaleX(0); transform-origin:left; transition: transform .5s var(--ease-out); }
 .contact-cta .mail-link:hover::after { transform: scaleX(1); }
 .contact-links { margin-top: clamp(3rem,6vw,5rem); display: flex; flex-wrap: wrap; gap: clamp(1.5rem,3vw,3rem); border-top: 1px solid var(--line); padding-top: 2.5rem; }
@@ -764,12 +772,14 @@ html.no-motion #scroll-progress { display: none; }
   .scroll-hint { display: none; }
   .hero { padding-block: 7rem 3rem; min-height: 92svh; }
   .contact-links { gap: 2rem; }
-  .contact-link .cl-v { font-size: clamp(1.1rem, 5vw, 1.5rem); overflow-wrap: anywhere; }
+  .contact-link .cl-v { font-size: clamp(1.1rem, 5vw, 1.5rem); overflow-wrap: break-word; }
   .footer-bar { flex-direction: column; align-items: flex-start; gap: .8rem; }
   /* phones: let the heading use full width and shrink enough that each phrase fits one line */
   .about-intro .about-lead { max-width: none; font-size: clamp(1.55rem, 6.2vw, 2.4rem); }
 }
 @media (max-width: 640px) {
+  /* phones: tighten the vertical rhythm between sections (was clamp(6rem,13vh,12rem)) */
+  :root { --section-y: clamp(3.75rem, 8.5vh, 6rem); }
   .work, .work.wide { grid-column: span 12; }
   .work.small { grid-column: span 6; }   /* secondary works: 2 columns on mobile */
   .work .work-media, .work.wide .work-media { aspect-ratio: 16 / 10; }

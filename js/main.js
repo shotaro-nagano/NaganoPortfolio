@@ -60,11 +60,11 @@
             ? `<img class="work-img-bg" src="${w.img}" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="work-img" src="${w.img}" alt="${w.title[lang]}" loading="lazy" decoding="async">`
             : `<div class="ph ph-stripes"></div><span class="ph-tag">${w.phph || "media"}</span>`}
           <span class="work-num">${String(i + 1).padStart(2, "0")}</span>
-          ${lock}
           <div class="work-reveal"></div>
           <div class="work-revtext"><span class="rev-pill">${t("work.view")} <span class="ar">→</span></span></div>
         </div>
         <div class="work-body">
+          ${lock}
           <div class="work-cat"><span class="d"></span>${w.cat[lang]}</div>
           <h3>${w.title[lang]}</h3>
           ${award}
@@ -371,6 +371,23 @@
       gsap.fromTo(chips, { y: 16, opacity: 0 }, {
         y: 0, opacity: 1, duration: 0.55, stagger: 0.035, ease: "power2.out",
         scrollTrigger: { trigger: row, start: "top 88%" }
+      });
+    });
+    // About bio — chapters cascade top→bottom; timeline spine draws with scroll
+    gsap.utils.toArray(".about-bio:not([data-sfx])").forEach((bioEl) => {
+      bioEl.setAttribute("data-sfx", "1");
+      const spine = bioEl.querySelector(".bio-spine");
+      if (spine) {
+        gsap.fromTo(spine, { scaleY: 0 }, {
+          scaleY: 1, ease: "none",
+          scrollTrigger: { trigger: bioEl, start: "top 80%", end: "bottom 72%", scrub: 0.5 }
+        });
+      }
+      gsap.utils.toArray(bioEl.querySelectorAll("p")).forEach((p) => {
+        gsap.fromTo(p, { y: 30, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.85, ease: "power3.out",
+          scrollTrigger: { trigger: p, start: "top 86%" }
+        });
       });
     });
     // Cert cards — pop in
