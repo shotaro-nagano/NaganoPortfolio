@@ -228,7 +228,6 @@ window.WORKS = [
     tech: ["生成AI", "画像生成", "Google Cloud Run"],
     role: { ja: "[ 役割 ]", en: "[ Role ]" },
     result: { ja: "制作支援ツールとして稼働。", en: "Running as a production-support tool." },
-    link: "https://pingpong-pro-designer-187605190392.us-west1.run.app",
     img: "assets/aidesign-thumb.jpg",
     phph: "ai-design-simulator"
   },
