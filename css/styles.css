@@ -612,26 +612,6 @@ section { position: relative; }
 .cert:hover { border-color: var(--line-strong); transform: translateY(-4px); }
 .cert img { width: 78%; height: 78%; object-fit: contain; }
 
-/* ---------- Beyond Work ---------- */
-.beyond { padding-block: var(--section-y); }
-.beyond-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem,2vw,1.8rem); }
-.beyond-card { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--bg-elev); display: flex; flex-direction: column; min-height: 360px; position: relative; transition: border-color .4s, transform .5s var(--ease-out); }
-.beyond-card:hover { border-color: var(--line-strong); transform: translateY(-4px); }
-.beyond-card .bc-media { aspect-ratio: 4/3; position: relative; overflow: hidden; }
-.beyond-card .bc-media .bc-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center; display:block; transition: transform .6s var(--ease-out); }
-.beyond-card:hover .bc-media .bc-img { transform: scale(1.04); }
-/* @nyagagram banner is a wide 16:9 image with the wordmark on the left; bias the 4:3
-   crop left so "@nyagagram" stays fully visible (mobile 16/7 shows the full width) */
-.beyond-card[href*="nyagagram"] .bc-img { object-position: left top; }
-/* ぴかお banner — same: keep the left "ぴかお" wordmark visible in the 4:3 crop */
-.beyond-card[href*="UCzzdKQ"] .bc-img { object-position: left top; }
-.beyond-card .bc-body { padding: clamp(1.2rem,2vw,1.8rem); display: flex; flex-direction: column; gap: .7rem; flex: 1; }
-.beyond-card .bc-k { font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-dim); }
-.beyond-card h3 { font-size: var(--fs-h3); font-weight: 500; letter-spacing: -0.01em; }
-.beyond-card p { color: var(--fg-dim); font-size: var(--fs-body); }
-.beyond-card .bc-link { margin-top: auto; font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); display:inline-flex; gap:.5em; align-items:center; }
-.beyond-card .bc-link.none { color: var(--fg-faint); }
-
 /* ---------- Contact / Footer ---------- */
 .contact { padding-block: var(--section-y) clamp(3rem,5vw,5rem); border-top: 1px solid var(--line); }
 .contact-cta { display: block; }
@@ -756,9 +736,6 @@ html.no-motion #scroll-progress { display: none; }
   .contact-cta .mail-link { display: block; margin-top: .4rem; }
 }
 @media (max-width: 900px) {
-  .beyond-grid { grid-template-columns: 1fr; }
-  .beyond-card { min-height: 0; }
-  .beyond-card .bc-media { aspect-ratio: 16 / 7; }
   .htrack .spanel { flex-basis: clamp(300px, 78vw, 560px); }
 }
 @media (max-width: 760px) {

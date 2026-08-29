@@ -183,7 +183,7 @@
       ring.style.transform = `translate(${rx}px,${ry}px)`;
     })();
     window.bindCursorTargets = function (scope) {
-      (scope || document).querySelectorAll("a, button, .work, [data-cursor], .magnetic, input, .beyond-card").forEach((el) => {
+      (scope || document).querySelectorAll("a, button, .work, [data-cursor], .magnetic, input").forEach((el) => {
         if (el.__cbound) return; el.__cbound = true;
         const label = el.getAttribute("data-cursor");
         el.addEventListener("pointerenter", () => {

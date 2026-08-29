@@ -9,6 +9,7 @@ AI活用 × 業務自動化 × Web開発。見た目はミニマル、動きは�
 
 ```
 index.html        # 全セクション（OGP・favicon・SEO込み）
+beyond.html       # 仕事の外の活動（写真 / Lofi / カードゲーム）
 css/styles.css    # デザインシステム・レスポンシブ・モーション
 js/i18n.js        # JA/EN 辞書 + Works / Skills データ
 js/hero.js        # Three.js ヒーローシェーダー
