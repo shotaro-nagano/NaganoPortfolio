@@ -801,6 +801,33 @@ html.no-motion #scroll-progress { display: none; }
 body.menu-open .menu-toggle span:nth-child(1) { transform: translateY(3.25px) rotate(45deg); }
 body.menu-open .menu-toggle span:nth-child(2) { transform: translateY(-3.25px) rotate(-45deg); }
 
+/* ---------- Beyond page ---------- */
+.back-link { font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); white-space: nowrap; }
+.back-link:hover { color: var(--fg); }
+.bp-hero { padding-block: clamp(8rem, 16vh, 11rem) clamp(2.5rem, 5vw, 4rem); }
+.bp-hero .bp-lead { color: var(--fg-dim); max-width: 48ch; font-size: var(--fs-body); }
+.bp-act { padding-block: clamp(3.5rem, 7vw, 6rem); border-top: 1px solid var(--line); }
+.bp-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(2rem, 4.5vw, 4.5rem); align-items: center; }
+.bp-grid.flip .bp-media { order: 2; }
+.bp-media img { width: 100%; display: block; border: 1px solid var(--line); border-radius: 4px; }
+.video-embed { position: relative; aspect-ratio: 16 / 9; background: var(--bg-elev); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.bp-text { display: flex; flex-direction: column; gap: 0.9rem; }
+.bp-text .bp-k { font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-dim); }
+.bp-text h3 { font-size: var(--fs-h3); font-weight: 500; letter-spacing: -0.01em; }
+.bp-text p { color: var(--fg-dim); font-size: var(--fs-body); max-width: 52ch; }
+.bp-link { margin-top: 0.4rem; font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); display: inline-flex; gap: 0.5em; align-items: center; }
+.bp-end { padding-block: clamp(2rem, 4vw, 3rem) clamp(3rem, 5vw, 5rem); }
+.bp-end .footer-bar { margin-top: 0; }
+.bp-end .footer-bar a { color: var(--fg-dim); }
+.bp-end .footer-bar a:hover { color: var(--fg); }
+.fb-beyond { color: var(--fg-dim); display: inline-flex; gap: 0.5em; align-items: center; }
+.fb-beyond:hover { color: var(--fg); }
+@media (max-width: 900px) {
+  .bp-grid { grid-template-columns: 1fr; align-items: start; }
+  .bp-grid.flip .bp-media { order: 0; }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
