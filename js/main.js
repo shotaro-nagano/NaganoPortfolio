@@ -297,7 +297,7 @@
     const reg = (tw) => { if (tw && tw.scrollTrigger) stfxTriggers.push(tw.scrollTrigger); };
 
     // 1) Section titles — chars rise out of line masks
-    document.querySelectorAll(".section-head h2").forEach((h) => {
+    document.querySelectorAll(".section-head h1, .section-head h2").forEach((h) => {
       h.classList.remove("r-up"); h.removeAttribute("data-rv"); h.classList.add("split-title");
       gsap.set(h, { opacity: 1, y: 0, clearProps: "transform" });
       const sp = new SplitType(h, { types: "lines,chars", tagName: "span" });
