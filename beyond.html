@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set theme before first paint to avoid a flash + an on-load color transition. */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Beyond Work — Nagano Shotaro</title>
+  <meta name="description" content="Nagano Shotaro が仕事の外でつくっているもの。写真（@nyagagram）、生成AIによる Lofi 音楽・映像、カードゲーム動画。" />
+  <meta name="author" content="Nagano Shotaro" />
+  <meta name="theme-color" content="#0a0b09" />
+
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Beyond Work — Nagano Shotaro" />
+  <meta property="og:description" content="仕事の外でつくっているもの。写真・AI音楽・カードゲーム動画。" />
+  <meta property="og:image" content="assets/og.png" />
+
+  <!-- favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0b09'/%3E%3Cpath d='M9 23V9h2.4l9.2 9.6V9H23v14h-2.4l-9.2-9.6V23z' fill='%23e8862b'/%3E%3C/svg%3E" />
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body lang="ja">
+
+  <!-- Custom cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"><span class="clabel"></span></div>
+
+  <!-- Scroll progress -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="dot"></span><span>N. SHOTARO</span></a>
+    <nav class="nav">
+      <a class="back-link" href="index.html" data-i18n="beyond.back">← ポートフォリオ</a>
+      <div class="nav-tools">
+        <button id="lang-btn" class="tool-btn lang-btn" aria-label="Switch language"><b class="ja on">JA</b><span class="sep">/</span><b class="en">EN</b></button>
+        <button id="theme-btn" class="tool-btn theme-btn" aria-label="Toggle theme">
+          <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Title -->
+    <section class="bp-hero" data-screen-label="Beyond Work">
+      <div class="shell">
+        <div class="section-head">
+          <span class="eyebrow" data-i18n="beyond.eyebrow">Beyond Work</span>
+          <h2 class="r-up" data-i18n-html="beyond.title"><span class="nb">仕事の外で、</span><span class="nb">つくっているもの。</span></h2>
+        </div>
+        <p class="bp-lead r-up" data-i18n="beyond.lead">エンジニアの仕事から離れた場所でも、手を動かしてつくり続けています。写真、音楽、映像 — 3つの活動を紹介します。</p>
+      </div>
+    </section>
+
+    <!-- 01 Photography -->
+    <section class="bp-act">
+      <div class="shell">
+        <div class="bp-grid">
+          <div class="bp-media r-up">
+            <img src="assets/by-instagram.jpg" alt="@nyagagram の写真グリッド" loading="lazy" decoding="async" />
+          </div>
+          <div class="bp-text">
+            <span class="bp-k r-up" data-i18n="beyond.b1k">写真 / Instagram</span>
+            <h3 class="r-up" data-i18n="beyond.b1t">@nyagagram</h3>
+            <p class="r-up" data-i18n="beyond.b1d">GR で撮りためた写真を発信。専用の紹介サイトも自作しました。</p>
+            <p class="r-up" data-i18n="beyond.b1p2">RICOH GR をポケットに入れて、街の光と影、ふとした瞬間を切り取っています。撮影から現像、紹介サイトの制作まで、すべて自分の手で。</p>
+            <a class="bp-link r-up" href="https://www.instagram.com/nyagagram" target="_blank" rel="noopener"><span data-i18n="beyond.b1link">Instagram を開く</span> <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Lofi Space -->
+    <section class="bp-act">
+      <div class="shell">
+        <div class="bp-grid flip">
+          <div class="bp-media r-up">
+            <div class="video-embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UU2ZDLk_oaVtE51Ydk4Xv2DA" title="Lofi Space — YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="bp-text">
+            <span class="bp-k r-up" data-i18n="beyond.b2k">AI 音楽・映像</span>
+            <h3 class="r-up" data-i18n="beyond.b2t">Lofi Space</h3>
+            <p class="r-up" data-i18n="beyond.b2d">生成AIを使った Lofi の音楽・映像制作。健全なコンテンツのみを発信しています。</p>
+            <p class="r-up" data-i18n="beyond.b2p2">作曲も映像もサムネイルも、生成AIツールを組み合わせて一人で制作。ツールの選び方や品質の整え方は、仕事での AI 活用にもそのまま活きています。</p>
+            <a class="bp-link r-up" href="https://www.youtube.com/@lofi-space-p7e" target="_blank" rel="noopener"><span data-i18n="beyond.b2link">チャンネルを開く</span> <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Card games -->
+    <section class="bp-act">
+      <div class="shell">
+        <div class="bp-grid">
+          <div class="bp-media r-up">
+            <div class="video-embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUzzdKQyJhgm0ciD7rwtCY6w" title="カードゲーム — YouTube" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="bp-text">
+            <span class="bp-k r-up" data-i18n="beyond.b3k">YouTube</span>
+            <h3 class="r-up" data-i18n="beyond.b3t">カードゲーム</h3>
+            <p class="r-up" data-i18n="beyond.b3d">カードゲームをテーマにした動画を制作・投稿しています。</p>
+            <p class="r-up" data-i18n="beyond.b3p2">企画から撮影・編集・配信まで一人で担当。ライブ配信やパック開封など、視聴者と一緒に楽しめる動画づくりを目指しています。</p>
+            <a class="bp-link r-up" href="https://youtube.com/channel/UCzzdKQyJhgm0ciD7rwtCY6w" target="_blank" rel="noopener"><span data-i18n="beyond.b3link">チャンネルを開く</span> <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="bp-end">
+      <div class="shell">
+        <div class="footer-bar">
+          <a href="index.html" data-i18n="beyond.backlong">← ポートフォリオへ戻る</a>
+          <span>© <span id="year">2026</span> Nagano Shotaro</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Back to top -->
+  <button id="to-top-fab" aria-label="ページ上部へ戻る" data-cursor="TOP">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg>
+  </button>
+
+  <!-- libraries (Three.js / hero.js は不要) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
+  <!-- app -->
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
