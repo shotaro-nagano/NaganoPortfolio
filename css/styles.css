@@ -217,7 +217,7 @@ section { position: relative; }
 /* ---------- Header / Nav ---------- */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 120;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   padding: clamp(1rem, 2vw, 1.6rem) var(--pad-x);
   mix-blend-mode: normal;
   transition: transform .5s var(--ease-out), background-color .4s, backdrop-filter .4s, border-color .4s;
@@ -779,8 +779,9 @@ body.menu-open .menu-toggle span:nth-child(1) { transform: translateY(3.25px) ro
 body.menu-open .menu-toggle span:nth-child(2) { transform: translateY(-3.25px) rotate(-45deg); }
 
 /* ---------- Beyond page ---------- */
-.back-link { font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); white-space: nowrap; transition: color .3s; }
+.back-link { font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); white-space: nowrap; transition: color .3s; display: inline-flex; align-items: center; gap: 0.5em; }
 .back-link:hover { color: var(--fg); }
+@media (max-width: 480px) { .back-link .bl-txt { display: none; } }
 .bp-hero { padding-block: clamp(8rem, 16vh, 11rem) clamp(2.5rem, 5vw, 4rem); }
 .bp-hero .bp-lead { color: var(--fg-dim); max-width: 48ch; font-size: var(--fs-body); }
 .bp-act { padding-block: clamp(3.5rem, 7vw, 6rem); border-top: 1px solid var(--line); }
