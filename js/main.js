@@ -625,7 +625,7 @@
       if (hasGSAP) {
         gsap.set(".r-up, .r-fade, .reveal-h", { clearProps: "transform", opacity: 1, y: 0, yPercent: 0 });
         gsap.set(".hero h1 .char", { yPercent: 0, opacity: 1 });
-        gsap.set(".section-head h2 .char, .about-lead .char, .ctitle .char", { yPercent: 0, opacity: 1, clearProps: "transform" });
+        gsap.set(".section-head h1 .char, .section-head h2 .char, .about-lead .char, .ctitle .char", { yPercent: 0, opacity: 1, clearProps: "transform" });
         gsap.set(".hero-eyebrow, .hero-lead, .hero-cta, .hero-name", { y: 0, opacity: 1 });
         gsap.set(".spanel .glyph", { rotate: 0, y: 0 });
         gsap.set(".spanel h3, .spanel p, .spanel .spanel-tags, .spanel .spanel-no", { x: 0, opacity: 1, clearProps: "transform" });
