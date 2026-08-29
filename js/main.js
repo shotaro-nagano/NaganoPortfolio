@@ -251,6 +251,7 @@
     heroSplits.forEach((s) => { try { s.revert(); } catch (e) {} });
     heroSplits = [];
     applyI18n();
+    if (!lines.length) return;
     if (!window.SplitType) {
       if (window.gsap) gsap.set(lines, { opacity: 1, y: 0 });
       return;
