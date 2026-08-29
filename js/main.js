@@ -419,10 +419,12 @@
           scrollTrigger: { trigger: document.body, start: "top top", end: "max", scrub: 0.3 } });
       }
       // hero exit parallax — content drifts up + fades as you leave
-      gsap.to(".hero-inner", { yPercent: -16, opacity: 0.15, ease: "none",
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom 25%", scrub: true } });
-      gsap.to(".hero-name", { opacity: 0, ease: "none",
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "40% top", scrub: true } });
+      if (document.querySelector(".hero")) {
+        gsap.to(".hero-inner", { yPercent: -16, opacity: 0.15, ease: "none",
+          scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom 25%", scrub: true } });
+        gsap.to(".hero-name", { opacity: 0, ease: "none",
+          scrollTrigger: { trigger: ".hero", start: "top top", end: "40% top", scrub: true } });
+      }
     } else {
       gsap.set(".r-up, .r-fade", { opacity: 1, y: 0 });
     }
@@ -604,7 +606,7 @@
     initScroll();
     runPreloader(() => {
       buildHero(false);
-      if (hasGSAP && !REDUCE) {
+      if (hasGSAP && !REDUCE && document.querySelector(".hero")) {
         gsap.fromTo(".hero-eyebrow, .hero-lead, .hero-cta, .hero-name",
           { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.08, ease: "power3.out", delay: 0.2 });
         setTimeout(() => gsap.set(".hero-eyebrow, .hero-lead, .hero-cta, .hero-name", { y: 0, opacity: 1, clearProps: "transform" }), 1700);
