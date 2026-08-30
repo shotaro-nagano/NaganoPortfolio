@@ -10,7 +10,13 @@
   const body = document.body;
   const REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const POINTER_FINE = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  if (REDUCE) root.classList.add("no-motion");
+  if (REDUCE) {
+    root.classList.add("no-motion");
+    // CSS `animation: none` cannot stop SVG SMIL (e.g. the radar sweep in .fx-ai) — pause it here.
+    document.querySelectorAll("svg.fx-art").forEach((s) => {
+      if (typeof s.pauseAnimations === "function") s.pauseAnimations();
+    });
+  }
 
   const hasGSAP = !!window.gsap;
   if (hasGSAP && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);

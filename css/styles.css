@@ -449,83 +449,45 @@ section { position: relative; }
 .spanel .glyph [fill]:not([fill="none"]) { fill: var(--c); }
 .spanel .spanel-tags .tag { border-color: color-mix(in srgb, var(--c) 36%, var(--line)); }
 
-/* ===== 01 AI — neural head ===== */
-.fx-ai .ai-skull { fill: color-mix(in srgb, var(--c) 7%, transparent); stroke: var(--c); stroke-width: 1.3; opacity: .5; stroke-dasharray: 5 9; animation: dashFlow 16s linear infinite; }
-.fx-ai .ai-edges line { stroke: var(--c); stroke-width: 1; opacity: .38; }
-.fx-ai .ai-nodes circle { fill: var(--c); transform-box: fill-box; transform-origin: center; animation: aiNode 2.8s var(--ease-inout) infinite; }
-.fx-ai .ai-nodes circle:nth-child(3n) { animation-delay: -.5s; }
-.fx-ai .ai-nodes circle:nth-child(3n+1) { animation-delay: -1.1s; }
-.fx-ai .ai-nodes circle:nth-child(4n) { animation-delay: -1.7s; }
-.fx-ai .ai-sig { fill: #fff; filter: drop-shadow(0 0 4px var(--c)) drop-shadow(0 0 2px var(--c)); }
-.fx-ai .ai-pulse { fill: none; stroke: var(--c); stroke-width: 1.2; transform-box: fill-box; transform-origin: center; animation: aiPulse 3.9s var(--ease-out) infinite; }
-.fx-ai .ai-pulse-2 { animation-delay: 1.3s; }
-.fx-ai .ai-pulse-3 { animation-delay: 2.6s; }
-@keyframes aiNode { 0%,100% { opacity: .4; transform: scale(.75); } 50% { opacity: 1; transform: scale(1.3); } }
-@keyframes aiPulse { 0% { transform: scale(.5); opacity: .55; } 70%,100% { transform: scale(1.2); opacity: 0; } }
+/* ===== 01 AI — polar instrument ===== */
+.fx-ai .C-ping { animation: C-ping 12s linear infinite; }
+@keyframes C-ping { 0% { opacity: .22; } 1.5% { opacity: 1; } 9% { opacity: .22; } 100% { opacity: .22; } }
+.fx-ai .C-orbit { animation: C-orbit 26s linear infinite; transform-origin: 160px 105px; }
+@keyframes C-orbit { to { transform: rotate(360deg); } }
 
-/* ===== 02 業務自動化 — document pipeline + gear ===== */
-.fx-auto .au-flow { fill: none; stroke: var(--c); stroke-width: 1.4; opacity: .4; stroke-dasharray: 2 7; stroke-linecap: round; animation: dashFlow 1.1s linear infinite; }
-.fx-auto .au-doc rect, .fx-auto .au-out-doc, .fx-auto .au-token rect { fill: color-mix(in srgb, var(--c) 15%, transparent); stroke: var(--c); stroke-width: 1.2; }
-.fx-auto .au-doc line, .fx-auto .au-token line { stroke: var(--c); stroke-width: 1; opacity: .6; }
-.fx-auto .au-stack { animation: auBob 3.2s var(--ease-inout) infinite alternate; }
-.fx-auto .au-gear { transform-box: fill-box; transform-origin: center; animation: spin 9s linear infinite; }
-.fx-auto .au-gear2 { transform-box: fill-box; transform-origin: center; animation: spin 6s linear infinite reverse; }
-.fx-auto .au-teeth rect { fill: var(--c); opacity: .85; }
-.fx-auto .au-gear-body { fill: color-mix(in srgb, var(--c) 16%, transparent); stroke: var(--c); stroke-width: 1.4; }
-.fx-auto .au-gear-hub { fill: var(--c); }
-.fx-auto .au-out-doc { fill: color-mix(in srgb, var(--c) 18%, transparent); }
-.fx-auto .au-check-c { fill: var(--c); }
-.fx-auto .au-check { fill: none; stroke: var(--bg); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 14; stroke-dashoffset: 14; animation: auCheck 3s var(--ease-out) infinite; }
-.fx-auto .au-bar-bg { fill: color-mix(in srgb, var(--c) 14%, transparent); }
-.fx-auto .au-bar { fill: var(--c); transform-box: fill-box; transform-origin: left center; animation: auBar 3s var(--ease-inout) infinite; }
-@keyframes auBob { from { transform: translateY(-2px); } to { transform: translateY(3px); } }
-@keyframes auCheck { 0%,60% { stroke-dashoffset: 14; } 78%,100% { stroke-dashoffset: 0; } }
-@keyframes auBar { 0% { transform: scaleX(0); } 70%,100% { transform: scaleX(1); } }
+/* ===== 02 業務自動化 — timing chart ===== */
+.fx-auto .bar { animation-duration: 10s; animation-timing-function: linear; animation-iteration-count: infinite; }
+.fx-auto .b1 { animation-name: C-b1; } .fx-auto .b2 { animation-name: C-b2; } .fx-auto .b3 { animation-name: C-b3; }
+.fx-auto .b4 { animation-name: C-b4; } .fx-auto .b5 { animation-name: C-b5; } .fx-auto .b6 { animation-name: C-b6; }
+@keyframes C-b1 { 0%{transform:scaleX(.002);opacity:0} 0.4%{opacity:1} 24.2%{transform:scaleX(1)} 95%{transform:scaleX(1);opacity:1} 98%,100%{transform:scaleX(1);opacity:0} }
+@keyframes C-b2 { 0%,24.2%{transform:scaleX(.002);opacity:0} 24.6%{opacity:1} 51.9%{transform:scaleX(1)} 95%{transform:scaleX(1);opacity:1} 98%,100%{transform:scaleX(1);opacity:0} }
+@keyframes C-b3 { 0%,24.2%{transform:scaleX(.002);opacity:0} 24.6%{opacity:1} 41.5%{transform:scaleX(1)} 95%{transform:scaleX(1);opacity:1} 98%,100%{transform:scaleX(1);opacity:0} }
+@keyframes C-b4 { 0%,51.9%{transform:scaleX(.002);opacity:0} 52.3%{opacity:1} 72.7%{transform:scaleX(1)} 95%{transform:scaleX(1);opacity:1} 98%,100%{transform:scaleX(1);opacity:0} }
+@keyframes C-b5 { 0%,41.5%{transform:scaleX(.002);opacity:0} 41.9%{opacity:1} 65.8%{transform:scaleX(1)} 95%{transform:scaleX(1);opacity:1} 98%,100%{transform:scaleX(1);opacity:0} }
+@keyframes C-b6 { 0%,72.7%{transform:scaleX(.002);opacity:0} 73.1%{opacity:1} 90%{transform:scaleX(1)} 95%{transform:scaleX(1);opacity:1} 98%,100%{transform:scaleX(1);opacity:0} }
+.fx-auto .C-now { animation: C-now 10s steps(13,end) infinite; }
+@keyframes C-now { 0%{transform:translateX(0)} 90%,100%{transform:translateX(260px)} }
 
-/* ===== 03 Web開発 — building UI + responsive ===== */
-.fx-web .web-frame, .fx-web .web-pframe { fill: color-mix(in srgb, var(--c) 7%, transparent); stroke: var(--c); stroke-width: 1.4; }
-.fx-web .web-bar { stroke: var(--c); stroke-width: 1; opacity: .4; }
-.fx-web .web-dot { fill: var(--c); opacity: .8; }
-.fx-web .web-url { fill: color-mix(in srgb, var(--c) 22%, transparent); }
-.fx-web .web-pnotch { fill: var(--c); opacity: .6; }
-.fx-web .web-blk { fill: color-mix(in srgb, var(--c) 20%, transparent); stroke: color-mix(in srgb, var(--c) 45%, transparent); stroke-width: 1; transform-box: fill-box; transform-origin: center; animation: webBuild 5s var(--ease-out) infinite; }
-.fx-web .b2 { animation-delay: .3s; } .fx-web .b3 { animation-delay: .6s; } .fx-web .b4 { animation-delay: .8s; } .fx-web .b5 { animation-delay: 1s; }
-.fx-web .pb1 { animation-delay: .5s; } .fx-web .pb2 { animation-delay: .8s; } .fx-web .pb3 { animation-delay: 1s; } .fx-web .pb4 { animation-delay: 1.2s; }
-.fx-web .web-scan { stroke: var(--c); stroke-width: 2; opacity: .5; filter: drop-shadow(0 0 4px var(--c)); }
-.fx-web .web-cursor { fill: var(--c); animation: blink 1.05s steps(1) infinite; }
-@keyframes webBuild { 0%,4% { opacity: 0; transform: scale(.7); } 16%,72% { opacity: 1; transform: scale(1); } 92%,100% { opacity: 0; transform: scale(.7); } }
-@keyframes blink { 50% { opacity: 0; } }
+/* ===== 03 Web開発 — rulers & columns ===== */
+.fx-web .bl { animation: C-shimmer 3.6s ease-in-out infinite; }
+@keyframes C-shimmer { 0%,100%{opacity:.12} 45%{opacity:.5} }
+.fx-web .C-bracket { transform: translate(34px,31px) scaleX(.84); animation: C-measure 14s cubic-bezier(.7,0,.25,1) infinite; }
+@keyframes C-measure {
+  0%,16%   { transform:translate(34px,31px)  scaleX(.84); }
+  26%,42%  { transform:translate(172px,31px) scaleX(1.30); }
+  52%,66%  { transform:translate(126px,31px) scaleX(.38); }
+  76%,90%  { transform:translate(80px,31px)  scaleX(1.76); }
+  100%     { transform:translate(34px,31px)  scaleX(.84); }
+}
+.fx-web .C-scan { animation: C-scan 9s cubic-bezier(.45,0,.55,1) infinite; }
+@keyframes C-scan { 0%,100%{transform:translateX(0)} 50%{transform:translateX(284px)} }
 
-/* ===== 04 ワークフロー — process flow ===== */
-.fx-flow .wf-link { fill: none; stroke: var(--c); stroke-width: 1.6; opacity: .45; stroke-dasharray: 5 6; animation: dashFlow 1.4s linear infinite; }
-.fx-flow .wf-node rect { fill: color-mix(in srgb, var(--c) 12%, transparent); stroke: var(--c); stroke-width: 1.5; }
-.fx-flow .wf-node .wf-ic { fill: none; stroke: var(--c); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.fx-flow .wf-node .wf-ic[d^="M2"] { fill: var(--c); stroke: none; }   /* lightning bolt filled */
-.fx-flow .wf-node .wf-ic-d { fill: var(--c); }
-.fx-flow .wf-token { fill: #fff; filter: drop-shadow(0 0 6px var(--c)) drop-shadow(0 0 3px var(--c)); }
-.fx-flow .wf-trail { fill: var(--c); opacity: .5; filter: drop-shadow(0 0 5px var(--c)); }
-.fx-flow .wf-arrow { fill: var(--c); opacity: .55; }
-.fx-flow .wf-node { animation: wfGlow 6s linear infinite; }
-.fx-flow .wf-n1 { animation-delay: 0s; } .fx-flow .wf-n2 { animation-delay: 1.2s; }
-.fx-flow .wf-n3 { animation-delay: 2.4s; } .fx-flow .wf-n4 { animation-delay: 4.8s; } .fx-flow .wf-n5 { animation-delay: 5.7s; }
-@keyframes wfGlow { 0%,5% { filter: drop-shadow(0 0 7px var(--c)) brightness(1.5); } 16%,100% { filter: brightness(1); } }
+/* ===== 04 ワークフロー — circuit traces ===== */
+.fx-flow .C-return { stroke-dasharray: 3 6; animation: C-dash 3.2s linear infinite; }
+@keyframes C-dash { to { stroke-dashoffset: -9; } }
 
-/* ambient particles (all scenes) */
-.fx-art .fx-dust circle { fill: var(--c); animation: dust 5.5s var(--ease-inout) infinite; }
-.fx-art .fx-dust circle:nth-child(2) { animation-delay: -1.4s; }
-.fx-art .fx-dust circle:nth-child(3) { animation-delay: -2.7s; }
-.fx-art .fx-dust circle:nth-child(4) { animation-delay: -3.8s; }
-.fx-art .fx-dust circle:nth-child(5) { animation-delay: -4.9s; }
-@keyframes dust { 0%,100% { opacity: .12; } 50% { opacity: .62; } }
-/* web: typing dots in the URL bar */
-.fx-web .web-typing circle { fill: var(--c); opacity: .35; animation: typing 1.5s steps(1) infinite; }
-.fx-web .web-typing circle:nth-child(2) { animation-delay: .3s; }
-.fx-web .web-typing circle:nth-child(3) { animation-delay: .6s; }
-@keyframes typing { 0%,75% { opacity: .9; } 76%,100% { opacity: .25; } }
-
-/* shared dash flow */
-@keyframes dashFlow { to { stroke-dashoffset: -200; } }
-@keyframes spin { to { transform: rotate(360deg); } }
+/* light theme: white signal dots would vanish on the light bg — use the accent colour */
+[data-theme="light"] .spanel .fx-art circle[fill="#fff"] { fill: currentColor; }
 
 @media (prefers-reduced-motion: reduce) {
   .spanel .fx-glow, .fx-ai, .fx-ai *, .fx-auto *, .fx-web *, .fx-flow * { animation: none !important; }
