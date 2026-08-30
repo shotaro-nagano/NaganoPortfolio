@@ -95,7 +95,8 @@ window.I18N = {
     "contact.resumetag": "近日公開",
     "contact.totop": "ページ上部へ",
     "contact.rights": "システムエンジニア / AI × 自動化 × Web",
-    "footer.beyond": "仕事の外でつくっているもの",
+    "contact.beyondk": "Beyond Work",
+    "contact.beyondv": "仕事の外でつくっているもの",
     "mq.1": "AI 活用", "mq.2": "業務自動化", "mq.3": "Web 開発", "mq.4": "n8n", "mq.5": "生成AI"
   },
   en: {
@@ -189,7 +190,8 @@ window.I18N = {
     "contact.resumetag": "Soon",
     "contact.totop": "Back to top",
     "contact.rights": "Systems Engineer / AI × Automation × Web",
-    "footer.beyond": "What I make outside the job",
+    "contact.beyondk": "Beyond Work",
+    "contact.beyondv": "What I make outside the job",
     "mq.1": "AI in practice", "mq.2": "Automation", "mq.3": "Web dev", "mq.4": "n8n", "mq.5": "Generative AI"
   }
 };
