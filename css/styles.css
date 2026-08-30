@@ -811,8 +811,7 @@ body.menu-open .menu-toggle span:nth-child(2) { transform: translateY(-3.25px) r
 .bp-link { margin-top: 0.4rem; font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-text); display: inline-flex; gap: 0.5em; align-items: center; }
 .bp-end { padding-block: clamp(2rem, 4vw, 3rem) clamp(3rem, 5vw, 5rem); }
 .bp-end .footer-bar { margin-top: 0; }
-.bp-end .footer-bar a { color: var(--fg-dim); transition: color .3s; }
-.bp-end .footer-bar a:hover { color: var(--fg); }
+.btn:hover .btn-arrow--back { transform: translateX(-4px); }
 @media (max-width: 900px) {
   .bp-grid, .bp-grid.flip { grid-template-columns: 1fr; align-items: start; }
   .bp-grid.flip .bp-media { order: 0; }
