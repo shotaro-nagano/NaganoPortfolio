@@ -657,19 +657,6 @@ section { position: relative; }
 .wm-confidential { display:flex; gap:.7em; align-items:center; font-family: var(--font-mono); font-size: var(--fs-mono-lg); color: var(--accent-text); border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line)); border-radius: 4px; padding: 1em 1.3em; background: var(--accent-soft); }
 .wm-confidential .conf-mk { flex:0 0 auto; width: 12px; height: 12px; background: var(--accent); }
 
-/* ---------- Marquee (contact divider) ---------- */
-/* ---------- Logo marquee (placeholder company logos — swap for real <img> later) ---------- */
-.marquee { position: relative; overflow: hidden; border-block: 1px solid var(--line); padding-block: clamp(1.5rem,3vw,2.7rem); white-space: nowrap; background: var(--bg-elev-2);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.marquee .mq-track { display: inline-flex; will-change: transform; }
-.marquee .mq-item { display: inline-flex; align-items: center; }
-.marquee .mq-logo { display: inline-flex; align-items: center; gap: .6em; padding-inline: clamp(1.7rem,3.8vw,3.8rem); color: var(--fg-dim); transition: color .45s var(--ease-out), opacity .45s var(--ease-out); }
-.marquee .mq-mark { width: clamp(23px,2.5vw,32px); height: auto; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; flex: 0 0 auto; }
-.marquee .mq-name { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.1rem,2vw,1.65rem); letter-spacing: 0.05em; }
-.marquee:hover .mq-logo { opacity: .5; }
-.marquee .mq-logo:hover { opacity: 1; color: var(--accent-text); }
-
 /* ---------- Reveal utility ---------- */
 .r-up { opacity: 0; transform: translateY(40px); }
 .r-fade { opacity: 0; }
@@ -686,8 +673,6 @@ html.no-motion #scroll-progress { display: none; }
 .split-title .char, .ctitle .char { display: inline-block; will-change: transform; }
 .about-lead .char { will-change: opacity; }
 
-/* marquee band skews with scroll velocity */
-.marquee { will-change: transform; }
 
 /* ---------- Responsive ---------- */
 /* Tablet */

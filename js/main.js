@@ -477,18 +477,6 @@
         gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: img.closest(".work"), start: "top bottom", end: "bottom top", scrub: true } });
       });
     }
-
-    // Logo marquee — smooth seamless scroll that eases to a pause on hover
-    const mq = document.querySelector(".mq-track");
-    if (mq && !REDUCE) {
-      const w = mq.scrollWidth / 2;
-      const tween = gsap.to(mq, { x: -w, duration: 40, ease: "none", repeat: -1, modifiers: { x: (x) => (parseFloat(x) % w) + "px" } });
-      const band = document.querySelector(".marquee");
-      if (band) {
-        band.addEventListener("pointerenter", () => gsap.to(tween, { timeScale: 0, duration: 0.6, overwrite: true }));
-        band.addEventListener("pointerleave", () => gsap.to(tween, { timeScale: 1, duration: 0.6, overwrite: true }));
-      }
-    }
   }
 
   /* ---------------- Header behaviour ---------------- */
