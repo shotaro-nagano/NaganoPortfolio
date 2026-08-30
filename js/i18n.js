@@ -276,18 +276,16 @@ window.WORKS = [
       ja: [
         "要件整理・UI/UX 設計から管理画面・入力画面の開発までを担当",
         "試合結果をリアルタイムに記録し、得失点率を自動計算する試合記録機能を開発",
-        "Docker による開発環境の構築手順を整備し、単体・結合テスト、パフォーマンス改善、リリース・運用支援まで実施",
-        "リーダーとして 2〜5 名のチームを牽引"
+        "Docker による開発環境の構築手順を整備し、単体・結合テスト、パフォーマンス改善、リリース・運用支援まで実施"
       ],
       en: [
         "Owned requirements, UI/UX design and development of the admin and input screens",
         "Built a match-recording feature that logs results in real time and auto-computes point ratios",
-        "Documented the Docker dev-environment setup and handled unit/integration testing, performance tuning, release and operations",
-        "Led a team of 2-5 as project lead"
+        "Documented the Docker dev-environment setup and handled unit/integration testing, performance tuning, release and operations"
       ]
     },
     tech: ["Java 21", "Spring Boot", "Thymeleaf", "jQuery", "MySQL", "AWS", "Docker", "CircleCI"],
-    role: { ja: "リーダー（2〜5名チーム）", en: "Team lead (2-5 people)" },
+    role: { ja: "リーダー", en: "Team lead" },
     result: { ja: "クラウド型の練習管理・試合記録システムとしてリリースし、運用支援まで担当。（参照権限のためリンクは非公開）", en: "Shipped as a cloud training-management and match-recording system, through to operational support. (Link private due to access restrictions.)" },
     img: "assets/athlete-thumb.jpg",
     phph: "training-manager"
